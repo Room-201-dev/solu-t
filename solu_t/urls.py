@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = "solu-t"
+
 urlpatterns = [
     path('sign_up/', views.SignUpView.as_view(), name='sign_up'),
     path('', views.LoginSolutView.as_view(), name='staff_login'),
