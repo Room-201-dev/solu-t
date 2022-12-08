@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from django.conf.global_settings import DATE_INPUT_FORMATS, DATETIME_INPUT_FORMATS
-from decouple import config
-from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -103,11 +101,11 @@ WSGI_APPLICATION = 'solu_t_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + str(BASE_DIR / "db.sqlite3")
-
-DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-}
+# default_dburl = 'sqlite:///' + str(BASE_DIR / "db.sqlite3")
+#
+# DATABASES = {
+#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
