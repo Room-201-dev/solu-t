@@ -12,11 +12,11 @@ CustomUser = get_user_model()
 
 def return_recipient_list(base):
     if base == '青梅':
-        return ['kojimakai5335@gmail.com']
+        return ['tyo4@towa-cast.net']
     if base == '坂戸':
-        return ['k19.toybox@gmail.com']
+        return ['tyo6@towa-cast.net']
     if base == '相模原':
-        return ['k-kojima@towa-cast.net']
+        return ['tyo8@towa-cast.net']
 
 
 class SignUpForm(UserCreationForm):
