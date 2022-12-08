@@ -1,0 +1,27 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/admin_page.css' %}">
+{% endblock %}
+
+{% block title %}Admin Page{% endblock %}
+
+{% block main %}
+    {% if user.is_superuser %}
+        <h3 style="color: #587D9F; text-align: center">管理者の {{ user.last_name }}さん ようこそ</h3>
+        {% for contact in incomplete_contact %}
+            {% if contact.tag == '返信待ち' %}
+                <div class="top_page">
+                    <a href="{% url 'contact_detail' contact.id %}" class="incomplete_block">
+                        <div>
+                            <h3>返信待ちのお問い合わせ</h3>
+                            <h4>{{ contact.base }}所属：{{ contact.name }} 様より{{ contact.contact_kind }} のお問い合わせ</h4>
+                            <p>{{ contact.message | linebreaksbr | truncatechars:50 }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

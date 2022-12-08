@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive_nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/apply_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive_admin_nav.css' %}">
+    {% block css %}{% endblock %}
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>Apply{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="header_block" style="display:flex; justify-content: center; align-items: center">
+            <div>
+                <h2 class="solt_title">Sol-T</h2>
+                <p class="make_solution">Make Solution</p>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% if user.is_superuser %}
+    <div class="main_block">
+        <div class="apply_page">
+            <h4>{% block month %}{% endblock %}月の未完了申請リスト</h4>
+            <div class="move_page_box this_page">
+                <a href="{% url 'apply_tyo4_thismonth' %}" style="width: 70px" class="oume">青梅</a>
+                <a href="{% url 'apply_tyo6_thismonth' %}" style="width: 70px" class="sakado">坂戸</a>
+                <a href="{% url 'apply_tyo8_thismonth' %}" style="width: 70px" class="sagamihara">相模原</a>
+            </div>
+        </div>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div style="display: flex; justify-content: center">
+                <table border="1" class="apply_table">
+                    {% block tr %}
+                    {% endblock %}
+                    {% block table %}
+                    {% endblock %}
+                </table>
+            </div>
+
+            <div class="button_box">
+                <div class="check_block">
+                    <label class="switch">
+                        <input type="checkbox" onclick="checkall()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                    <span class="button-text">申請完了</span>
+                </button>
+            </div>
+
+        </form>
+
+        <div class="move_page_box">
+            <a href="{% url 'apply_data' %}">申請データまとめ</a>
+            {% block move_page %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% if user.is_superuser %}
+        <footer>
+            <nav style="height: 170px">
+                <div class="footer_block" style="height: 100%; padding: 0; background-color: #587D9F;">
+                    <ul class="footer_ul">
+                        <a href="{% url 'manager_page' %}" style="padding: 0; background-color: #587D9F;">
+                            <div style="display: flex; align-items: center">
+                                <img src="{% static 'img/Sol-T icon.png' %}" alt="Sol-T(ソルト)のアイコン" class="icon_size">
+                            </div>
+                        </a>
+                        <a href="{% url 'apply_tyo4_thismonth' %}" class="apply">
+                            <li class="footer_list">申請処理</li>
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </a>
+                        <a href="{% url 'contact_list' %}" class="contact">
+                            <li class="footer_list">問い合わせ処理</li>
+                            <i class="fa-solid fa-gift"></i>
+                        </a>
+                        <a href="{% url 'notice_list' %}" class="notice">
+                            <li class="footer_list">お知らせ管理</li>
+                            <i class="fa-solid fa-file-pen"></i>
+                        </a>
+                    </ul>
+                    <div class="copyright_block">
+                        <p class="header_write copyright">2022 ©️ Kai Kojima</p>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+    {% endif %}
+
+
+    <script>
+        const checkbox = document.getElementsByName('delete')
+
+        function checkall() {
+            for (let i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].checked === true) {
+                    checkbox[i].checked = false
+                } else if (checkbox[i].checked === false) {
+                    checkbox[i].checked = true
+                }
+            }
+        }
+    </script>
+{% endif %}
+
+{% if not user.is_superuser %}
+    <div style="text-align: center; margin-top: 3vh">
+        <h3>管理者としてログインしてください</h3>
+        <a href="{% url 'manager_login' %}">ログイン</a>
+    </div>
+{% endif %}
+
+<script type="text/javascript" src="{% static 'js/paid_check.js' %}"></script>
+
+</body>
+</html>

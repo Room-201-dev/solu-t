@@ -1,0 +1,45 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block title %}Contact Reply{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="display_block contact_box reply_content" style="display: block;">
+            <p class="kind_contact"> お問い合わせの種類：{{ contact_data.contact_kind }}</p>
+            <p>{{ contact_data.message | linebreaksbr }}</p>
+        </div>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form_block">
+                <div class="form_hidden">
+                    <p>{{ reply_form.base }}</p>
+                    <p>{{ reply_form.kind_contact }}</p>
+                    <p>{{ reply_form.name }}</p>
+                    <p>{% render_field reply_form.email %}</p>
+                </div>
+
+                <div class="display_block contact_box" style="display: block;">
+                    <label style="color: #fff; background-color: #587D9F; display: inline-block; padding: 5px; border-radius: 4px">返信内容：</label>
+                    {% render_field reply_form.message cols=60 %}
+                </div>
+            </div>
+
+            <div style="text-align: right">
+                <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                    <span class="button-text">返信する</span>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

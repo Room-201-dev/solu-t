@@ -1,0 +1,26 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/notice.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+{% endblock %}
+
+{% block title %}Notice List{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; color: #587D9F; margin-bottom: 2vh">
+        <h3 style="font-size: 20px">お知らせ一覧</h3>
+    </div>
+    {% for notice in notice_list %}
+        <a href="{% url 'notice_detail' notice.id %}">
+            <div class="reply_box">
+                <h3 class="reply_situation">to.{{ notice.base }}：{{ notice.shift }} > Subject：{{ notice.title }}</h3>
+                <p class="reply_title">{{ notice.content }}</p>
+            </div>
+        </a>
+    {% endfor %}
+    <div class="new_post">
+        <a href="{% url 'post_notice' %}">＋新規作成</a>
+    </div>
+{% endblock %}

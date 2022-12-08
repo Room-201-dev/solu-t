@@ -1,0 +1,24 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block title %}Contact Detail{% endblock %}
+
+{% block main %}
+    <div class="contact_detail_box">
+        <h4 class="reply_title"
+            style="text-align: center; font-size: 19px; background-color: #587D9F; color: white; padding: 5px; border-radius: 4px">{{ contact_data.base }}所属：{{ contact_data.name }}
+            様から<br>{{ contact_data.contact_kind }} のお問い合わせ</h4>
+        <p style="color: #587D9F">{{ contact_data.message | linebreaksbr }}</p>
+        {% if contact_data.tag == '解決済み' %}
+            <p style="text-align: center; color: #d50707">このお問い合わせは {{ contact_data.name }}様 に 解決した と判定されました</p>
+        {% endif %}
+    </div>
+    <div style="text-align: right; margin-top: 20px; " class="choice_block">
+        <a href="{% url 'reply' contact_data.id %}" class="reply">返信する</a>
+        <a href="{% url 'delete_contact' contact_data.id %}" class="dangerous">削除する</a>
+    </div>
+{% endblock %}

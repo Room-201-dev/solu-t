@@ -1,0 +1,59 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/apply_list.css' %}">
+        <link rel="stylesheet" href="{% static 'css/export.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; color: #587D9F; margin-bottom: 2vh">
+        <h3 style="font-size: 20px">休暇申請データまとめ</h3>
+    </div>
+    <div style="display: flex; justify-content: center">
+        <table border="1" class="apply_table">
+            <tr>
+                <th>所属拠点</th>
+                <th>名前</th>
+                <th>申請内容</th>
+                <th>申請日</th>
+            </tr>
+            {% for apply in apply_data %}
+                <tr>
+                    <td>{{ apply.base }}</td>
+                    <td>{{ apply.name }}</td>
+                    <td>{{ apply.choice_kind }}</td>
+                    {% if apply.date is None %}
+                        <td>{{ apply.refresh_date|date:"Y/m/d" }}</td>
+                    {% else %}
+                        <td>{{ apply.date|date:"Y/m/d" }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div style="display: flex; margin-top: 2vh; justify-content: right; width: 90%">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div style="text-align: right">
+                <button class="learn-more danger" type="submit">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                    <span class="button-text">削除する</span>
+                </button>
+            </div>
+        </form>
+        <div style="text-align: right; margin-left: 1vw">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                <a class="button-text" href="{% url 'export_excel' %}">Export Excel</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'solu_t/nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock %}
+
+{% block title %}Contact Fix{% endblock %}
+
+{% block main %}
+    <div class="responsive_login_form responsive_form" style="margin: 3vh auto 0 auto; width: 80%">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div style="text-align: center">
+                <h4>お問い合わせは解決しましたか？</h4>
+
+                <div style="text-align: right; margin-top: 5vh">
+                    <button class="learn-more" type="submit">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                        <span class="button-text">解決した</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'solu_t/nav.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+{% endblock %}
+
+{% block title %}Sorry Form...{% endblock %}
+
+{% block main %}
+    <div class="form_title">
+        <h3>遅刻・欠勤申請フォーム</h3>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form_block">
+            <div>
+                <label for="">申請内容</label>
+                {% render_field form.choice_kind %}
+            </div>
+            <div class='form_hidden'>
+                {% render_field form.name %}
+            </div>
+            <div class='form_hidden'>
+                {% render_field form.employee_number %}
+            </div>
+            <div class='form_hidden'>
+                {% render_field form.login_id %}
+            </div>
+            <div class='form_hidden'>
+                {% render_field form.base %}
+            </div>
+            <div>
+                <label for="">欠勤・遅刻理由</label>
+                {% render_field form.reason %}
+            </div>
+            <div>
+                <label for="">詳細理由</label>
+                {% render_field form.reason_detail %}
+            </div>
+            <div>
+                <label for="">翌日</label>
+                {% render_field form.next_date %}
+            </div>
+            <div class='form_hidden'>
+                {% render_field form.assignment class='form_hidden' %}
+            </div>
+            {% if user.base == '青梅' %}
+                <div>
+                    <label for="">出勤 or 到着予定時刻</label>
+                    {% render_field form.work_time %}
+                </div>
+                <div>
+                    <label for="">退勤予定時刻</label>
+                    {% render_field form.exit_time %}
+                </div>
+                <div class="form_hidden change_input">
+                    <label for="">本来の出勤時刻※遅刻の方のみ</label>
+                    {% render_field form.behind_work %}
+                </div>
+                <div class="form_hidden change_input">
+                    <label for="">退勤時刻※遅刻の方のみ</label>
+                    {% render_field form.behind_exit %}
+                </div>
+            {% elif user.base == '相模原' %}
+                <div>
+                    <label for="">欠損時間</label>
+                    {% render_field form.lost_time %}
+                </div>
+            {% elif user.base == '坂戸' %}
+                <div>
+                    <label for="">欠損時間</label>
+                    {% render_field form.lost_time %}
+                </div>
+            {% endif %}
+            <div>
+                <label for="">体温</label>
+                {% render_field form.temperature %}
+            </div>
+        </div>
+        <div style="text-align: right">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                <span class="button-text">送信する</span>
+            </button>
+        </div>
+
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/change_input_sorry.js' %}"></script>
+{% endblock %}

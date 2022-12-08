@@ -1,0 +1,55 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post_notice.css' %}">
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+    {% if user.is_superuser %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form_block">
+                <div>
+                    <label for="">お知らせする拠点</label>
+                    {{ form.choice_base }}
+                </div>
+                <div>
+                    <label for="">お知らせするシフト帯</label>
+                    {{ form.choice_shift }}
+                </div>
+                <div>
+                    <label for="">お知らせの重要度</label>
+                    {{ form.choice_important }}
+                </div>
+                <div>
+                    <label for="">お知らせの件名</label>
+                    {{ form.title }}
+                </div>
+                <div>
+                    <label for="">タグづけ</label>
+                    {{ form.choice_tag }}
+                </div>
+                <div class="text_area_block" style="display: block;">
+                    <label for="" style="margin-bottom: 1vh!important;">お知らせの内容</label>
+                    {% render_field form.content cols=60 rows=30 style="height: 300px; width: 100%; box-sizing: border-box;" class="text_area" %}
+                </div>
+            </div>
+
+            <div style="text-align: right; margin-top: 2vh">
+                <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                    <span class="button-text">お知らせする</span>
+                </button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
+

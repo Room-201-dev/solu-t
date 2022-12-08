@@ -1,0 +1,71 @@
+{% extends 'solu_t/nav.html' %}
+{% load static %}
+
+{% block load %}
+    {% bootstrap_javascript jquery='full' %}
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% load widget_tweaks %}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+{% endblock %}
+
+{% block title %}Plus Work{% endblock %}
+
+{% block main %}
+    <div class="form_title">
+        <h3>追加出勤申請フォーム</h3>
+    </div>
+    <form action="" method="post" onsubmit="return alert_check()">
+        {% csrf_token %}
+        <div class="form_block">
+            {% if user.base == '青梅' %}
+                {{ base_form.media }}
+                <div class="form_hidden">
+                    <p>{{ base_form.name }}</p>
+                    <p>{{ base_form.email }}</p>
+                    <p>{{ base_form.login_id }}</p>
+                    <p>{{ base_form.assignment }}</p>
+                    <p>{{ base_form.base }}</p>
+                </div>
+                <div id="display_block" class="display_block">
+                    <label>申請日</label>
+                    {{ base_form.plus_work }}
+                </div>
+                <div class="display_block">
+                    <label style="white-space: nowrap">希望勤務時間</label>
+                    {{ base_form.work_time }}
+                </div>
+
+            {% elif user.base == '相模原' or user.base == '坂戸' %}
+                {{ customize_form.media }}
+                <div class="form_hidden">
+                    <p>{{ customize_form.name }}</p>
+                    <p>{{ customize_form.email }}</p>
+                    <p>{{ customize_form.login_id }}</p>
+                    <p>{{ customize_form.assignment }}</p>
+                    <p>{{ customize_form.base }}</p>
+                </div>
+                <div id="display_block" class="display_block">
+                    <label>申請日</label>
+                    {% render_field customize_form.plus_work %}
+                </div>
+                <div class="display_block">
+                    <label style="white-space: nowrap">希望勤務時間</label>
+                    {{ customize_form.work_time }}
+                </div>
+            {% endif %}
+        </div>
+        <div style="text-align: right">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                <span class="button-text">送信する</span>
+            </button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post_notice.css' %}">
+{% endblock %}
+
+{% block title %}Notice Edit{% endblock %}
+
+{% block main %}
+    {% if user.is_superuser %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form_block">
+                <div class="form_hidden">
+                    {{ notice_edit_form.choice_base }}
+                    {{ notice_edit_form.choice_shift }}
+                    {{ notice_edit_form.choice_important }}
+                </div>
+                <div>
+                    <label for="">お知らせの件名</label>
+                    {{ notice_edit_form.title }}
+                </div>
+                <div>
+                    <label for="">タグづけ</label>
+                    {{ notice_edit_form.choice_tag }}
+                </div>
+                <div class="text_area_block" style="display: block;">
+                    <label for="" style="margin-bottom: 1vh">お知らせの内容</label>
+                    {% render_field notice_edit_form.content cols=60 rows=30 style="height: 300px; width: 100%; box-sizing: border-box;" class="text_area" %}
+                </div>
+            </div>
+
+            <div style="text-align: right">
+                <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                    <span class="button-text">お知らせする</span>
+                </button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}

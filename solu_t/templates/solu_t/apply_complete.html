@@ -1,0 +1,31 @@
+{% extends 'solu_t/nav.html' %}
+
+{% block title %}Apply Complete{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; margin: 5% 7.5% 0 7.5%; width: 85%">
+        <h3>申請ありがとうございます</h3>
+        <p class="p">
+            <br>
+            {{ context.name }} 様が入力された
+            <br>{{ context.holiday|date:"m月d日"|default:'' }}
+            {% if not context.makeup_holiday is None %}
+                {{ context.makeup_holiday|date:"m月d日" }} と {{ context.makeup_workday|date:"m月d日" }}
+            {% endif %}
+            の {{ context.kind }}申請 が正常に送信されました。
+            <br>
+            <br>
+            {% if not context.paid_leave == "" %}
+                残日数を確認次第{{ context.paid_leave }}を処理いたします。
+                <br>
+                <br>
+            {% endif %}
+            処理結果をしばらくお待ちくださいませ。
+            <br>
+            引き続きよろしくお願いいたします。
+            <br>
+            <br>
+            <a href="{% url 'change_schedule' %}">追加で申請する</a>
+        </p>
+    </div>
+{% endblock %}

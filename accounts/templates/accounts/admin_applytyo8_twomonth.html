@@ -1,0 +1,59 @@
+{% extends 'accounts/admin_apply_content.html' %}
+
+{% block css %}
+    <style>
+        .sagamihara {
+            background-color: #587D9F;
+            color: #fff !important;
+        }
+    </style>
+{% endblock %}
+
+{% block title %} TYO8 Two Month{% endblock %}
+
+{% block month %}翌々{% endblock %}
+
+{% block tr %}
+    <tr>
+        <th>所属会社</th>
+        <th>配属工程</th>
+        <th>名前</th>
+        <th>ログイン ID</th>
+        <th></th>
+        <th>申請内容</th>
+        <th>休暇希望日</th>
+        <th>振休日</th>
+        <th>振出日</th>
+        <th>勤務時間※振替時</th>
+        <th>休出の場合</th>
+        <th>勤務時間</th>
+        <th>リフレッシュ休暇</th>
+    </tr>
+{% endblock %}
+
+{% block table %}
+    {% for list in two_month %}
+        <p style="display: none" class="base">{{ list.base }}</p>
+        <tr class="table_box">
+            <td>東和キャスト</td>
+            <td>{{ list.assignment }}</td>
+            <td>{{ list.name }}</td>
+            <td>{{ list.login_id }}</td>
+            <td></td>
+            <td>{{ list.choice_kind }}</td>
+            <td>{{ list.date|date:"Y/m/d"|default:"" }}</td>
+            <td>{{ list.holiday_date|date:"Y/m/d"|default:"" }}</td>
+            <td>{{ list.work_date|date:"Y/m/d"|default:"" }}</td>
+            <td>{{ list.work_time|default:"" }}</td>
+            <td>{{ list.plus_work|date:"Y/m/d"|default:"" }}</td>
+            <td>{{ list.overtime|default:"" }}</td>
+            <td>{{ list.refresh_dat|date:"Y/m/d"|default:"" }}</td>
+            <td><input type="checkbox" name="delete" value="{{ list.id }}"></td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block move_page %}
+    <a href="{% url 'apply_tyo8_thismonth' %}">今月へ戻る</a>
+    <a href="{% url 'apply_tyo8_nextmonth' %}">翌月へ戻る</a>
+{% endblock %}

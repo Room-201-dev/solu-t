@@ -1,0 +1,22 @@
+{% extends 'solu_t/nav.html' %}
+
+{% block title %}LH Complete{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; margin: 5% 7.5% 0 7.5%; width: 85%">
+        <h3>申請ありがとうございます</h3>
+        <p class="p">
+            {{ context.name }} 様が入力された
+            <br>
+            {{ context.lh_adjust|date:"m月d日" }} の {{ context.kind }}申請 が正常に送信されました。
+            <br>
+            <br>
+            処理結果をしばらくお待ちくださいませ。
+            <br>
+            引き続きよろしくお願いいたします。
+            <br>
+            <br>
+            <a href="{% url 'mypage' %}">トップページへ</a>
+        </p>
+    </div>
+{% endblock %}

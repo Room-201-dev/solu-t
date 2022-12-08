@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive_nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+    <style>
+        .login_block p {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="header_block" style="display:flex; justify-content: center; align-items: center">
+            <div>
+                <h2 class="solt_title">Sol-T</h2>
+                <p class="make_solution">Make Solution</p>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<form action="" method="post" style="width: 80%; margin: 2vh auto 0 auto" class="responsive_login_form">
+    {% csrf_token %}
+    <div style="text-align: center" class="login_block">
+        {{ form.as_p }}
+    </div>
+
+    <div style="text-align: right" class="login_submit">
+        <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">LOGIN</span>
+        </button>
+    </div>
+</form>

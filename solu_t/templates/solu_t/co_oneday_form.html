@@ -1,0 +1,80 @@
+{% extends 'solu_t/nav.html' %}
+{% load static %}
+
+{% block load %}
+    {% bootstrap_javascript jquery='full' %}
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% load widget_tweaks %}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+{% endblock %}
+
+{% block title %}Co OneDay{% endblock %}
+
+{% block main %}
+    <div class="form_title">
+        <h3>協力休暇申請フォーム</h3>
+    </div>
+    <form action="" method="post" onsubmit="return alert_check()">
+        {% csrf_token %}
+        <div class="form_block">
+            {% if user.base == '青梅' %}
+                {{ base_form.media }}
+                <div class="form_hidden">
+                    <p>{{ base_form.name }}</p>
+                    <p>{{ base_form.email }}</p>
+                    <p>{{ base_form.login_id }}</p>
+                    <p>{{ base_form.assignment }}</p>
+                    <p>{{ base_form.base }}</p>
+                </div>
+                <div>
+                    <label for="">申請内容</label>
+                    {% render_field base_form.choice_kind %}
+                </div>
+                <div id="holiday_input" class="display_block">
+                    <label>申請日</label>
+                    {% render_field base_form.refresh_date %}
+                </div>
+                <div class="display_block form_hidden change_input" id="makeup_holiday">
+                    <label style="white-space: nowrap">時短希望日</label>
+                    {% render_field base_form.early_date %}
+                </div>
+                <div class="display_block form_hidden change_input" id="work_date">
+                    <label style="white-space: nowrap">勤務時間※時短の場合</label>
+                    {{ base_form.early_work }}
+                </div>
+
+            {% elif user.base == '相模原' or user.base == '坂戸' %}
+                {{ customize_form.media }}
+                <div class="form_hidden">
+                    <p>{{ customize_form.name }}</p>
+                    <p>{{ customize_form.email }}</p>
+                    <p>{{ customize_form.login_id }}</p>
+                    <p>{{ customize_form.assignment }}</p>
+                    <p>{{ customize_form.base }}</p>
+                </div>
+                <div id="holiday_input" class="display_block">
+                <label>申請日</label>
+                {% render_field customize_form.refresh_date %}
+            {% endif %}
+            </div>
+
+            <div style="text-align: right">
+                <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                    <span class="button-text">送信する</span>
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'js/change_input_sorry.js' %}"></script>
+{% endblock %}

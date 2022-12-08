@@ -1,0 +1,80 @@
+{% load static %}
+{% block load %}{% endblock %}
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/submit_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive_nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_apply.css' %}">
+    {% block css %}{% endblock %}
+
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="header_block" style="display:flex; justify-content: center; align-items: center">
+            <div>
+                <h2 class="solt_title">Sol-T</h2>
+                <p class="make_solution">Make Solution</p>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div>
+    {% block main %}{% endblock %}
+</div>
+
+{% if user.is_authenticated %}
+    <footer>
+        <nav>
+            <div class="footer_block">
+                <ul class="footer_ul">
+                    <a href="{% url 'mypage' %}" style="padding: 0; background-color: #587D9F;">
+                        <li class="footer_list" style="background-color: #587D9F;"></li>
+                        <div style="display: flex; align-items: center">
+                            <img src="{% static 'img/Sol-T icon.png' %}" alt="Sol-T(ソルト)のアイコン" class="icon_size">
+                        </div>
+                    </a>
+                    <a href="{% url 'change_schedule' %}" class="apply">
+                        <li class="footer_list">休暇・振替</li>
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </a>
+                    <a href="{% url 'sorry_form' %}">
+                        <li class="footer_list">欠勤・遅刻</li>
+                        <i class="fa-solid fa-user-large-slash"></i>
+                    </a>
+                    <a href="{% url 'contact' %}">
+                        <li class="footer_list">担当者へ相談</li>
+                        <i class="fa-solid fa-comments"></i>
+                    </a>
+                </ul>
+                <div class="copyright_block">
+                    <p class="header_write copyright">2022 ©️ Kai Kojima</p>
+                </div>
+            </div>
+        </nav>
+    </footer>
+{% endif %}
+
+{% if not user.is_authenticated %}
+    <div style="text-align: center; margin-top: 3vh">
+        <h3>ログインしてください</h3>
+        <a href="{% url 'staff_login' %}">ログイン</a>
+    </div>
+{% endif %}
+
+{% block js %}{% endblock %}
+</body>
+</html>

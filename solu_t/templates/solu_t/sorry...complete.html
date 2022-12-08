@@ -1,0 +1,17 @@
+{% extends 'solu_t/nav.html' %}
+
+{% block title %}Sorry Complete{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; margin: 5% 7.5% 0 7.5%; width: 85%">
+        <h3>申請ありがとうございます</h3>
+        <p class="p">
+            {{ context.name }} 様の欠勤・遅刻連絡が正常に送信されました
+            <br>
+            引き続きよろしくお願いいたします
+            <br>
+            <br>
+            <a href="{% url 'mypage' %}">トップページへ</a>
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,119 @@
+@media screen and ( max-width: 480px ) {
+    * {
+        font-size: 15px !important;
+        max-width: 100vw;
+    }
+
+    body {
+        height: 100vh !important;
+    }
+
+    body > div {
+        width: 92% !important;
+        padding-bottom: 100px!important;
+        margin-right: 4% !important;
+        margin-left: 4% !important;
+    }
+
+    form {
+        padding-bottom: 85px;
+    }
+
+    .solt_title {
+        font-size: 20px!important;
+    }
+
+    nav {
+        height: auto !important;
+    }
+
+    .responsive_login_form {
+        margin-top: 50% !important;
+        margin-bottom: 50% !important;
+    }
+
+    .login_submit {
+        margin-top: 10% !important;
+    }
+
+    .superuser_view {
+        color: #587D9F;
+        font-size: 21px !important;
+    }
+
+    footer li {
+        font-size: 0 !important;
+    }
+
+    .footer_list {
+        margin-bottom: 0;
+    }
+
+    .footer_ul {
+        margin-bottom: 0;
+        padding: 4px 0 4px 0 !important;
+        justify-content: space-around !important;
+        align-items: center;
+    }
+
+    .footer_ul a {
+        display: inline-block;
+    }
+
+    .footer_ul a div {
+        display: flex;
+        height: 3rem;
+        align-items: center;
+    }
+
+    .icon_size {
+        width: 100%;
+        height: 100%;
+    }
+
+    .copyright {
+        font-size: 10px;
+    }
+
+    .copyright_block {
+        padding-bottom: 2px;
+        height: auto;
+    }
+
+    .copyright_block p {
+        margin-bottom: 0;
+    }
+
+    .fa-solid {
+        font-size: 1.75rem !important;
+    }
+
+    .contact_detail_box {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .form_block {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .reply_content {
+        text-align: center!important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .text_area_block {
+        display: block!important;
+    }
+
+    .text_area_block label {
+        margin-bottom: 10px!important;
+    }
+
+    .text_area {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

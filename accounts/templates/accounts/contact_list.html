@@ -1,0 +1,88 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+{% endblock %}
+
+{% block title %}Contact List{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; color: #587D9F; margin-bottom: 2vh">
+        <h3 style="font-size: 20px">お問い合わせ一覧</h3>
+    </div>
+    <div style="text-align: center;">
+        <div style="color: #587D9F; margin: 0 auto 2vh auto; padding-bottom: 1vh; border-bottom: 0.3px solid #587D9F; display: inline-block; justify-content: center">
+            <form method="get" action="{% url 'contact_search' %}">
+                <label for="">所属と名前で検索する：</label>
+                <input class="search_input" type="text" name="keyword" placeholder="お問い合わせを検索...">
+                <button style="margin-left: 2vw; background-color: #587D9F; padding: 8px; color: #fff; border-radius: 4px" type="submit" class="search_button">検索</button>
+            </form>
+        </div>
+    </div>
+
+    {% for contact in contact_page %}
+        <a href="{% url 'contact_detail' contact.id %}">
+            <div class="reply_box">
+                <p class="reply_situation">{{ contact.tag | default:'' }}</p>
+                <h4 class="reply_title">{{ contact.base }}所属：{{ contact.name }} 様からの {{ contact.contact_kind }}
+                    のお問い合わせ</h4>
+            </div>
+        </a>
+
+    {% endfor %}
+
+    {% if contact_page.has_other_pages %}
+        <nav aria-label="">
+            <ul class="pagination-link">
+                {% if contact_page.has_previous %}
+                    <li class="change-page before_page"><a class="page_font"
+                                                           href="?page={{ contact_page.previous_page_number }}"><</a>
+                    </li>
+                {% else %}
+                    <li class="change-page" style="margin-right: 11px">
+                        <div class="page_font limit_before" href="#"><</div>
+                    </li>
+                {% endif %}
+
+                {% if contact_page.has_previous %}
+                    {% if contact_page.previous_page_number != 1 %}
+                        <li class="change-page page_number"><a class="page_font" href="?page=1">1</a></li>
+                        <li class="change-page page_font leaders">…</li>
+                    {% endif %}
+                    <li class="change-page page_number"><a class="page_font page_number"
+                                                           href="?page={{ contact_page.previous_page_number }}">{{ contact_page.previous_page_number }}</a>
+                    </li>
+                {% endif %}
+                <li class="change-page page_number">
+                    <div class="page_font current_page_number" href="#">{{ contact_page.number }}</div>
+                </li>
+                {% if contact_page.has_next %}
+                    <li class="change-page page_number"><a class="page_font"
+                                                           href="?page={{ contact_page.next_page_number }}">{{ contact_page.next_page_number }}</a>
+                    </li>
+                    {% if contact_page.next_page_number != contact_page.paginator.num_pages %}
+                        <li class="change-page page_font page_number leaders">…</li>
+                        <li class="change-page page_number"><a class="page_font"
+                                                               href="?page={{ contact_page.paginator.num_pages }}">{{ contact_page.paginator.num_pages }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+                {% if contact_page.has_next %}
+                    <li class="change-page after_page"><a class="page_font"
+                                                          href="?page={{ contact_page.next_page_number }}">></a>
+                    </li>
+                {% else %}
+                    <li class="change-page">
+                        <div class="arrow_font limit_after" href="#">></div>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'js/reply_situation.js' %}"></script>
+{% endblock %}

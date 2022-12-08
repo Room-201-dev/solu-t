@@ -1,0 +1,20 @@
+{% extends 'solu_t/nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+
+{% block title %}Reply Detail{% endblock %}
+
+{% block main %}
+    <div class="contact_detail_box">
+        <h4 class="reply_title" style="text-align: center; font-size: 19px; background-color: #587D9F; color: white; padding: 5px; border-radius: 4px">{{ contact_data.contact_kind }}</h4>
+        <p style="color: #587D9F">{{ contact_data.message | linebreaksbr }}</p>
+    </div>
+    <div style="text-align: right; margin-top: 20px;  margin-right: 10vw" class="choice_block">
+        <a href="{% url 'reply_form' contact_data.id %}" class="reply">返信する</a>
+        <a href="{% url 'reply_fix' contact_data.id %}" class="dangerous">解決した</a>
+    </div>
+{% endblock %}

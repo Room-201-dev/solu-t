@@ -1,0 +1,27 @@
+{% extends 'solu_t/nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block title %}Notice Detail{% endblock %}
+
+{% block main %}
+    <div class="contact_detail_box">
+        <h4 class="reply_title"
+            style="text-align: center; font-size: 19px; background-color: #587D9F; color: white; padding: 5px; border-radius: 4px">{{ notice_data.title }}</h4>
+        <p style="color: #587D9F">{{ notice_data.content | linebreaksbr }}</p>
+    </div>
+    <div class="attend_box">
+        {% if notice_data.tag == '追加出勤' %}
+            <a href="{% url 'plus_work' %}" class="attend_form">追加出勤申請</a>
+        {% elif notice_data.tag == '協力休暇' %}
+            <a href="{% url 'co_oneday' %}" class="attend_form danger">協力休暇申請</a>
+        {% elif notice_data.tag == '追加出勤 + 協力休暇' %}
+            <a href="{% url 'plus_work' %}" class="attend_form">追加出勤申請</a>
+            <a href="{% url 'co_oneday' %}" class="attend_form danger">協力休暇申請</a>
+        {% endif %}
+    </div>
+{% endblock %}
