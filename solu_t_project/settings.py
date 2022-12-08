@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from django.conf.global_settings import DATE_INPUT_FORMATS, DATETIME_INPUT_FORMATS
 
@@ -20,7 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3u5k@prm*=s-@+d=2z0th!2qd8(_dvruqy^-2brw3pb36s63h6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -74,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'solu_t_project.urls'
@@ -144,7 +144,11 @@ USE_L10N = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+ os.path.join(BASE_DIR, 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -165,33 +169,19 @@ MDEDITOR_CONFIGS = {
     }
 }
 
+#Heroku database
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=600,
+ssl_require=True)
+DATABASES['default'].update(db_from_env)
 try:
-    # 存在する場合、ローカルの設定読み込み
-    from .settings_local import *
+ from .local_settings import *
 except ImportError:
-    pass
-
+ pass
 if not DEBUG:
-    # Heroku settings
+ SECRET_KEY = 'django-insecure-3u5k@prm*=s-@+d=2z0th!2qd8(_dvruqy^-2brw3pb36s63h6' #削除したSECRET_KEYをコピペします
 
-    # staticの設定
-    import os
-    import django_heroku
-
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    # Static files (CSS, JavaScript, Images)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATIC_URL = '/static/'
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
-
-    MIDDLEWARE += [
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-    ]
-
-    # HerokuのConfigを読み込み
-    django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
