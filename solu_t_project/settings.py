@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from django.conf.global_settings import DATE_INPUT_FORMATS, DATETIME_INPUT_FORMATS
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,8 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = True
 
 SESSION_COOKIE_AGE = 86400
 SESSION_SAVE_EVERY_REQUEST = True
@@ -103,10 +102,16 @@ WSGI_APPLICATION = 'solu_t_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# default_dburl = 'sqlite:///' + str(BASE_DIR / "db.sqlite3")
-#
+
 # DATABASES = {
-#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'name',
+#         'USER': 'user',
+#         'PASSWORD': '',
+#         'HOST': 'host',
+#         'PORT': '',
+#     }
 # }
 
 # Password validation
