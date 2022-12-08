@@ -23,10 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
+DEBUG = True
+
 SESSION_COOKIE_AGE = 86400
 SESSION_SAVE_EVERY_REQUEST = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 DATE_INPUT_FORMATS += ['%Y/%m/%d']
 DATETIME_INPUT_FORMATS += ('%Y/%m/%d',)
@@ -141,7 +143,7 @@ USE_L10N = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
  os.path.join(BASE_DIR, 'static'),
