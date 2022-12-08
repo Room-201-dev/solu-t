@@ -1,1 +1,1 @@
-web: gunicorn djangoCalendarApp.wsgi --log-file -
+web: gunicorn solu_t_project.wsgi --log-file -
