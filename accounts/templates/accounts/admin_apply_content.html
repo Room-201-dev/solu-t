@@ -88,10 +88,9 @@
             <nav style="height: 170px">
                 <div class="footer_block" style="height: 100%; padding: 0; background-color: #587D9F;">
                     <ul class="footer_ul">
-                        <a href="{% url 'manager_page' %}" style="padding: 0; background-color: #587D9F;">
-                            <div style="display: flex; align-items: center">
-                                <img src="{% static 'img/Sol-T icon.png' %}" alt="Sol-T(ソルト)のアイコン" class="icon_size">
-                            </div>
+                        <a href="{% url 'manager_page' %}" class="top">
+                            <li class="footer_list">トップ</li>
+                            <i class="fa-solid fa-house"></i>
                         </a>
                         <a href="{% url 'apply_tyo4_thismonth' %}" class="apply">
                             <li class="footer_list">申請処理</li>

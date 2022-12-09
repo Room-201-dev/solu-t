@@ -43,11 +43,9 @@
         <nav>
             <div class="footer_block">
                 <ul class="footer_ul">
-                    <a href="{% url 'mypage' %}" style="padding: 0; background-color: #587D9F;">
-                        <li class="footer_list" style="background-color: #587D9F;"></li>
-                        <div style="display: flex; align-items: center">
-                            <img src="{% static 'img/Sol-T icon.png' %}" alt="Sol-T(ソルト)のアイコン" class="icon_size">
-                        </div>
+                    <a href="{% url 'mypage' %}">
+                        <li class="footer_list">トップ</li>
+                        <i class="fa-solid fa-house"></i>
                     </a>
                     <a href="{% url 'change_schedule' %}" class="apply">
                         <li class="footer_list">休暇・振替</li>
