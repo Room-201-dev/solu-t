@@ -16,22 +16,18 @@ from .models import ApplyList, ApplyData, Notice, CustomUser, ContactData
 from .forms import SorryForm, ApplyBaseForm, ApplyCustomizeForm, SignUpForm, ContactForm, LoginForm, BasePlusWorkForm, \
     BaseRefreshDayForm, CustomPlusWorkForm, CustomRefreshDayForm
 
-from django.views.decorators.csrf import requires_csrf_token
-from django.http import HttpResponseServerError
-
-
-# Create your views here.
-@requires_csrf_token
-def my_customized_server_error(request, template_name='500.html'):
-    import sys
-    from django.views import debug
-    error_html = debug.technical_500_response(request, *sys.exc_info()).content
-    return HttpResponseServerError(error_html)
 
 class SignUpView(FormView):
     form_class = SignUpForm
     template_name = 'solu_t/sign_up.html'
     success_url = reverse_lazy('mypage')
+
+    def get(self, request, *args, **kwargs):
+        form = SignUpForm
+
+        return render(request, 'solu_t/sign_up.html', {
+            'form': form
+        })
 
     def post(self, request, *args, **kwargs):
         form = SignUpForm(request.POST or None)

@@ -25,6 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
+SECRET_KEY = '&0=+d!3@h+))wz8byut_0=)2t&$o_x4wj@o3r^@9&rtd&22*f+'
+
 SESSION_COOKIE_AGE = 86400
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -170,7 +172,7 @@ MDEDITOR_CONFIGS = {
     }
 }
 
-DEBUG = False
+DEBUG = True
 
 try:
     # 存在する場合、ローカルの設定読み込み
