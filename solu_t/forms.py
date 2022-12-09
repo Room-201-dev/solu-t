@@ -410,7 +410,7 @@ class ApplyCustomizeForm(forms.Form):
 
         work_time = self.cleaned_data['work_time']
 
-        if self.cleaned_data['paid_leave'] is None:
+        if self.cleaned_data['paid_leave'] == '':
             paid_leave = ''
         else:
             paid_leave = '<有給>'
