@@ -210,7 +210,7 @@ class SorryForm(forms.Form):
                               temperature=temperature, ))
             elif base == '坂戸':
                 send_mail(subject, content, 'solu-t@staff', recipient_list,
-                          html_message='<table border="1"><tr><th>{assignment}</th><th>RG</th><th>東和キャスト</th><th>{login_id}</th>{name}<th>{choice_kind}</th><th>{lost_time}h</th><th>本人</th><th>{next_date}</th><th>{reason_detail}</th></tr></table>'.format(
+                          html_message='<table border="1"><tr><th>{assignment}</th><th>RG</th><th>東和キャスト</th><th>{login_id}</th><th>{name}</th><th>{choice_kind}</th><th>{lost_time}h</th><th>本人</th><th>{next_date}</th><th>{reason_detail}</th></tr></table>'.format(
                               assignment=assignment.replace('bound', '').upper(),
                               name=name.replace('　', ''),
                               login_id=login_id,
@@ -222,7 +222,7 @@ class SorryForm(forms.Form):
                               temperature=temperature, ))
             elif base == '相模原':
                 send_mail(subject, content, 'solu-t@staff', recipient_list,
-                          html_message='<table border="1"><tr><th>{assignment}</th><th>東和キャスト</th><th>{login_id}</th>{name}<th>{choice_kind}</th><th>{lost_time}h</th><th>本人</th><th>{next_date}</th><th>{reason_detail}</th></tr></table>'.format(
+                          html_message='<table border="1"><tr><th>{assignment}</th><th>東和キャスト</th><th>{login_id}</th><th>{name}</th><th>{choice_kind}</th><th>{lost_time}h</th><th>本人</th><th>{next_date}</th><th>{reason_detail}</th></tr></table>'.format(
                               assignment=assignment.replace('bound', '').upper(),
                               name=name.replace('　', ''),
                               login_id=login_id,
