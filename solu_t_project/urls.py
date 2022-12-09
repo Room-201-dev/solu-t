@@ -24,3 +24,4 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('mdeditor/', include('mdeditor.urls')),
 ]
+

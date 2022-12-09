@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
 
-app_name = "solu-t"
+
+handler500 = views.my_customized_server_error
 
 urlpatterns = [
     path('sign_up/', views.SignUpView.as_view(), name='sign_up'),
@@ -18,3 +19,4 @@ urlpatterns = [
     path('mypage/reply/<int:pk>/reply_form/', views.ReplyFormView.as_view(), name='reply_form'),
     path('mypage/reply/<int:pk>/reply_fix/', views.ReplyFixView.as_view(), name='reply_fix'),
 ]
+
