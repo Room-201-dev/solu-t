@@ -194,7 +194,7 @@ class SorryForm(forms.Form):
 
         try:
             if base == '青梅':
-                send_mail(subject, content, 'sol-t@staff', recipient_list,
+                send_mail(subject, content, 'solu-t@staff', recipient_list,
                           html_message='<table border="1"><tr><th>東和キャスト</th><th>{choice_kind}</th><th>{employee_number}</th><th>{name}</th><th>{reason}</th><th>{reason_detail}</th><th>{next_date}</th><th>{assignment}</th><th>{work_time}</th><th>{exit_time}</th><th>{behind_work}</th><th>{behind_exit}</th><th></th><th>{temperature}℃</th></tr></table>'.format(
                               assignment=assignment,
                               name=name.replace('　', ''),
@@ -209,7 +209,7 @@ class SorryForm(forms.Form):
                               behind_exit=behind_exit,
                               temperature=temperature, ))
             elif base == '坂戸':
-                send_mail(subject, content, 'sol-t@staff', recipient_list,
+                send_mail(subject, content, 'solu-t@staff', recipient_list,
                           html_message='<table border="1"><tr><th>{assignment}</th><th>RG</th><th>東和キャスト</th><th>{login_id}</th>{name}<th>{choice_kind}</th><th>{lost_time}h</th><th>本人</th><th>{next_date}</th><th>{reason_detail}</th></tr></table>'.format(
                               assignment=assignment.replace('bound', '').upper(),
                               name=name.replace('　', ''),
@@ -221,7 +221,7 @@ class SorryForm(forms.Form):
                               reason_detail=reason_detail,
                               temperature=temperature, ))
             elif base == '相模原':
-                send_mail(subject, content, 'sol-t@staff', recipient_list,
+                send_mail(subject, content, 'solu-t@staff', recipient_list,
                           html_message='<table border="1"><tr><th>{assignment}</th><th>東和キャスト</th><th>{login_id}</th>{name}<th>{choice_kind}</th><th>{lost_time}h</th><th>本人</th><th>{next_date}</th><th>{reason_detail}</th></tr></table>'.format(
                               assignment=assignment.replace('bound', '').upper(),
                               name=name.replace('　', ''),
@@ -329,8 +329,8 @@ class ApplyBaseForm(forms.Form):
         recipient_list = return_recipient_list(base)
 
         try:
-            send_mail(subject, content, 'sol-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>'.format(
+            send_mail(subject, content, 'solu-t@staff', recipient_list,
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -415,9 +415,9 @@ class ApplyCustomizeForm(forms.Form):
         else:
             paid_leave = '<有給>'
 
-        subject = '{name} 様より{choice_kind} paid_leave が届いております'.format(name=name.replace('　', ''),
-                                                                       choice_kind=choice_kind.replace(' ', ''),
-                                                                       paid_leave=paid_leave)
+        subject = '{name} 様より{choice_kind} {paid_leave} が届いております'.format(name=name.replace('　', ''),
+                                                                         choice_kind=choice_kind.replace(' ', ''),
+                                                                         paid_leave=paid_leave)
         content = '{name}{login_id}{choice_kind}{date}{work_date}{holiday_date}{work_time}'.format(
             assignment=assignment,
             name=name,
@@ -431,8 +431,8 @@ class ApplyCustomizeForm(forms.Form):
         recipient_list = return_recipient_list(base)
 
         try:
-            send_mail(subject, content, 'sol-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>'.format(
+            send_mail(subject, content, 'solu-t@staff', recipient_list,
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -489,8 +489,8 @@ class BasePlusWorkForm(forms.Form):
         recipient_list = return_recipient_list(base)
 
         try:
-            send_mail(subject, content, 'sol-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休日出勤</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th></th><th>{work_time}</th><th></th><th></th><th></th></tr></table>'.format(
+            send_mail(subject, content, 'solu-t@staff', recipient_list,
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休日出勤</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th></th><th>{work_time}</th><th></th><th></th><th></th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -545,8 +545,8 @@ class CustomPlusWorkForm(forms.Form):
         recipient_list = return_recipient_list(base)
 
         try:
-            send_mail(subject, content, 'sol-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休出 希望</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th>{work_time}</th><th></th><th></th><th></th></tr></table>'.format(
+            send_mail(subject, content, 'solu-t@staff', recipient_list,
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休出 希望</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th>{work_time}</th><th></th><th></th><th></th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -620,8 +620,8 @@ class BaseRefreshDayForm(forms.Form):
         recipient_list = return_recipient_list(base)
 
         try:
-            send_mail(subject, content, 'sol-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{early_date}</th><th>{early_work}</th><th>{refresh_date}</th></tr></table>'.format(
+            send_mail(subject, content, 'solu-t@staff', recipient_list,
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{early_date}</th><th>{early_work}</th><th>{refresh_date}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -667,8 +667,8 @@ class CustomRefreshDayForm(forms.Form):
         recipient_list = return_recipient_list(base)
 
         try:
-            send_mail(subject, content, 'sol-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{refresh_date}</th></tr></table>'.format(
+            send_mail(subject, content, 'solu-t@staff', recipient_list,
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{refresh_date}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -707,7 +707,8 @@ class ContactForm(forms.Form):
         subject = '{base}所属： {name} 様より {kind_contact} のお問い合わせがありました'.format(base=base, name=name,
                                                                              kind_contact=kind_contact)
         from_sender = '{name} <{email}>'.format(name=name, email=email)
-        message = 'お問い合わせ内容：{kind_contact}\n{message}\n'.format(kind_contact=kind_contact, message=message)
+        message = 'お問い合わせ内容：{kind_contact}\n{message}\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+            kind_contact=kind_contact, message=message)
 
         recipient_list = return_recipient_list(base)
 

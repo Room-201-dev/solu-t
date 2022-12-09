@@ -29,13 +29,6 @@ from django.http import HttpResponseServerError
 
 # Create your views here.
 
-@requires_csrf_token
-def my_customized_server_error(request, template_name='500.html'):
-    import sys
-    from django.views import debug
-    error_html = debug.technical_500_response(request, *sys.exc_info()).content
-    return HttpResponseServerError(error_html)
-
 
 class LoginManagerView(LoginView):
     def post(self, request, *args, **kwargs):
@@ -270,7 +263,7 @@ class ApplyTYO4ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -321,7 +314,7 @@ class ApplyTYO4NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -372,7 +365,7 @@ class ApplyTYO4TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -425,7 +418,7 @@ class ApplyTYO6ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -476,7 +469,7 @@ class ApplyTYO6NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -527,7 +520,7 @@ class ApplyTYO6TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -578,7 +571,7 @@ class ApplyTYO8ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -629,7 +622,7 @@ class ApplyTYO8NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -680,10 +673,10 @@ class ApplyTYO8TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n'.format(
+            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
-            complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
+            complete_mail = EmailMessage(subject, content, 'manager@towa', recipient_list)
             complete_mail.send()
         ApplyList.objects.filter(pk__in=post_pks).delete()
         return redirect('apply_tyo8_twomonth')
@@ -748,9 +741,9 @@ class ContactReplyView(View):
             contact_data.save()
 
             subject = 'お問い合わせに返信がきました！'
-            content = contact_data.message
+            content = contact_data.message + '\nhttps://solu-t.herokuapp.com/'
             recipient_list = [reply_form.cleaned_data['email']]
-            send_mail(subject, content, 'k-kojima@towa-cast.net', recipient_list, )
+            send_mail(subject, content, 'manager@towa', recipient_list, )
 
             return redirect('contact_list')
 
