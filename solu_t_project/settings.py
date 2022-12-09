@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SESSION_COOKIE_AGE = 86400
 SESSION_SAVE_EVERY_REQUEST = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 DATE_INPUT_FORMATS += ['%Y/%m/%d']
 DATETIME_INPUT_FORMATS += ('%Y/%m/%d',)
