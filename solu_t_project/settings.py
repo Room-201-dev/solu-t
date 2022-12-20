@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'bootstrap4',
     'bootstrap_datepicker_plus',
-    'mdeditor',
 ]
 
 BOOTSTRAP4 = {
@@ -128,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ja-jp'
+LANGUAGE_CODE = 'ja'
 
 TIME_ZONE = 'Asia/Tokyo'
 
@@ -155,13 +154,6 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 AUTH_USER_MODEL = 'solu_t.CustomUser'
-
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-MDEDITOR_CONFIGS = {
-    'default': {
-        'language': 'en',
-    }
-}
 
 try:
     from .settings_local import *

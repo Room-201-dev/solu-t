@@ -696,7 +696,9 @@ class ContactForm(forms.Form):
         'class': 'email_form',
     }))
     base = forms.CharField(max_length=10)
-    message = MDTextFormField(label='内容', required=True)
+    message = forms.CharField(label='内容', required=True, widget=forms.Textarea(attrs={
+        'placeholder': 'お問い合わせの内容をご記入ください'
+    }))
 
     def send_email(self):
         name = self.cleaned_data['name']
