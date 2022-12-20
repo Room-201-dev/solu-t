@@ -397,21 +397,20 @@ class PlusWorkView(LoginRequiredMixin, View):
             return HttpResponse('無効なヘッダが検出されました')
 
 
-class ContactFormView(FormView):
+class ContactFormView(View):
     template_name = 'solu_t/contact.html'
-    form_class = ContactForm
     success_url = reverse_lazy('mypage')
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        form = ContactForm(request.POST or None, initial={
+        form = ContactForm(initial={
             'name': user.last_name + user.first_name,
             'email': user.email,
             'base': user.base,
         })
         return render(request, 'solu_t/contact.html', {
             'user': user,
-            'form': form,
+            'form': form
         })
 
     def post(self, request, *args, **kwargs):
