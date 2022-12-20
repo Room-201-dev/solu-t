@@ -142,9 +142,6 @@ USE_L10N = False
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -166,7 +163,7 @@ MDEDITOR_CONFIGS = {
 }
 
 
-DEBUG = True
+DEBUG = False
 
 try:
     # 存在する場合、ローカルの設定読み込み
