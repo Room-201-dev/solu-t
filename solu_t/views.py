@@ -441,7 +441,7 @@ class ContactFormView(FormView):
             return HttpResponse('無効なヘッダが検出されました')
 
 
-class MypageView(LoginRequiredMixin, View):
+class MypageView(View):
     def get(self, request, *args, **kwargs):
         notice = Notice.objects.order_by('-id')
         reply = ContactData.objects.order_by('-id')
