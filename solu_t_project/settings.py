@@ -166,7 +166,7 @@ MDEDITOR_CONFIGS = {
 }
 
 
-DEBUG = False
+DEBUG = True
 
 try:
     # 存在する場合、ローカルの設定読み込み
