@@ -15,8 +15,8 @@
 
 {% block tr %}
     <tr>
-        <th>所属会社</th>
-        <th>配属工程</th>
+{#        <th>所属会社</th>#}
+{#        <th>配属工程</th>#}
         <th>名前</th>
         <th>ログイン ID</th>
         <th></th>
@@ -35,8 +35,8 @@
     {% for list in this_month %}
         <p style="display: none" class="base">{{ list.base }}</p>
         <tr class="table_box">
-            <td>東和キャスト</td>
-            <td>{{ list.assignment }}</td>
+{#            <td>東和キャスト</td>#}
+{#            <td>{{ list.assignment }}</td>#}
             <td>{{ list.name }}</td>
             <td>{{ list.login_id }}</td>
             <td></td>
@@ -47,7 +47,7 @@
             <td>{{ list.work_time|default:"" }}</td>
             <td>{{ list.plus_work|date:"Y/m/d"|default:"" }}</td>
             <td>{{ list.overtime|default:"" }}</td>
-            <td>{{ list.refresh_dat|date:"Y/m/d"|default:"" }}</td>
+            <td>{{ list.refresh_date|date:"Y/m/d"|default:"" }}</td>
             <td><input type="checkbox" name="delete" value="{{ list.id }}"></td>
         </tr>
     {% endfor %}

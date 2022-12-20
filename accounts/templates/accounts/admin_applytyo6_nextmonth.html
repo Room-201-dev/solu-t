@@ -47,7 +47,7 @@
             <td>{{ list.work_time|default:"" }}</td>
             <td>{{ list.plus_work|date:"Y/m/d"|default:"" }}</td>
             <td>{{ list.overtime|default:"" }}</td>
-            <td>{{ list.refresh_dat|date:"Y/m/d"|default:"" }}</td>
+            <td>{{ list.refresh_date|date:"Y/m/d"|default:"" }}</td>
             <td><input type="checkbox" name="delete" value="{{ list.id }}"></td>
         </tr>
     {% endfor %}
