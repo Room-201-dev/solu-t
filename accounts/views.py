@@ -741,7 +741,7 @@ class ContactReplyView(View):
             contact_data.save()
 
             subject = 'お問い合わせに返信がきました！'
-            content = contact_data.message + '\nhttps://solu-t.herokuapp.com/'
+            content = contact_data.message + '\n\nhttps://solu-t.herokuapp.com/'
             recipient_list = [reply_form.cleaned_data['email']]
             send_mail(subject, content, 'manager@towa', recipient_list, )
 
