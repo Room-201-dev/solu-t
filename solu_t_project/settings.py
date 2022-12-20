@@ -26,7 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-SECRET_KEY = '&0=+d!3@h+))wz8byut_0=)2t&$o_x4wj@o3r^@9&rtd&22*f+'
 
 DEBUG = False
 
@@ -185,6 +184,7 @@ if not DEBUG:
     # STATICFILES_DIRS = (
     #     os.path.join(BASE_DIR, 'static'),
     # )
+    SECRET_KEY = os.environ['SECRET_KEY']
 
     MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware',
