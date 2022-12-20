@@ -127,7 +127,7 @@ input:checked + .slider:before {
 
 /*------ ADDED CSS ---------*/
 .slider:after {
-    content: 'CHECK';
+    content: 'Check';
     color: #587D9F;
     display: block;
     position: absolute;
@@ -140,7 +140,7 @@ input:checked + .slider:before {
 
 input:checked + .slider:after {
     color: #fff;
-    content: 'UNCHECK';
+    content: 'UnCheck';
 }
 
 /*--------- END --------*/
