@@ -164,7 +164,6 @@ MDEDITOR_CONFIGS = {
 }
 
 try:
-    # 存在する場合、ローカルの設定読み込み
     from .settings_local import *
 except ImportError:
     pass
