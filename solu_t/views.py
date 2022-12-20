@@ -409,7 +409,6 @@ class ContactFormView(View):
             'base': user.base,
         })
         return render(request, 'solu_t/contact.html', {
-            'user': user,
             'form': form
         })
 
