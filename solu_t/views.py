@@ -56,17 +56,18 @@ class SignUpView(FormView):
 
 
 class LoginSolutView(View):
+    def get(self, request, *args, **kwargs):
+        form = LoginForm(request.POST or None)
+        return render(request, 'solu_t/login.html', {'form': form})
+
     def post(self, request, *args, **kwargs):
-        form = LoginForm(data=request.POST)
+        form = LoginForm(data=request.POST or None)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             user = CustomUser.objects.get(username=username)
             login(request, user)
             return redirect('mypage')
-        return render(request, 'solu_t/login.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        form = LoginForm(request.POST)
         return render(request, 'solu_t/login.html', {'form': form})
 
 
