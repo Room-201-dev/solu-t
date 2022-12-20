@@ -165,6 +165,7 @@ MDEDITOR_CONFIGS = {
     }
 }
 
+
 DEBUG = False
 
 try:
