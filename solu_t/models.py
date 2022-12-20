@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from mdeditor.fields import MDTextField
-import markdown
 
 
 # Create your models here.
@@ -113,7 +111,7 @@ class ContactData(models.Model):
     email = models.EmailField('メールアドレス')
     base = models.CharField('所属拠点', max_length=10, choices=BASE_CHOICE)
     contact_kind = models.CharField('お問い合わせの種類', max_length=50)
-    message = MDTextField(verbose_name='お知らせ内容', default='')
+    message = models.TextField(verbose_name='お知らせ内容', default='')
     tag = models.CharField('タグ', max_length=20, null=True)
 
     def __str__(self):
