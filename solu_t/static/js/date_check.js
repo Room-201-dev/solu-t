@@ -15,9 +15,10 @@ function alert_check() {
     let kind = document.getElementById('id_choice_kind')
     let paid_leave = document.getElementById('id_paid_leave')
 
-    if (kind.value === '休暇希望') {
+    if (kind.value === '休暇希望' || kind.value === '休暇 希望') {
         console.log(paid_leave.value)
         let date_value = document.querySelector("#holiday_input > input[type=hidden]").value
+
         let date_reformat = date_value.toString()
         if (date_reformat === '') {
             alert('休暇希望日を入力してください')
@@ -41,7 +42,7 @@ function alert_check() {
                 }
             }
         }
-    } else if (kind.value === '振替') {
+    } else if (kind.value === '振替' || kind.value === '振替 希望') {
 
         let makeup_holiday_value = document.querySelector("#makeup_holiday > input[type=hidden]").value
         let work_date_value = document.querySelector("#work_date > input[type=hidden]").value
