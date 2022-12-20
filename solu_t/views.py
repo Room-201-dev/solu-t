@@ -404,7 +404,7 @@ class ContactFormView(FormView):
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        form = ContactForm(initial={
+        form = ContactForm(request.POST or None, initial={
             'name': user.last_name + user.first_name,
             'email': user.email,
             'base': user.base,
