@@ -54,7 +54,7 @@
             <td>{{ list.early_date|date:"Y/m/d"|default:"" }}</td>
             <td>{{ list.early_work|default:"" }}</td>
             <td>{{ list.refresh_date|date:"Y/m/d"|default:"" }}</td>
-            <td style="display: none">{{ list.remarks_area }}</td>
+            <td class="paid_leave" style="display: none">{{ list.remarks_area }}</td>
             <td><input type="checkbox" name="delete" value="{{ list.id }}"></td>
         </tr>
     {% endfor %}
