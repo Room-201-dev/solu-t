@@ -529,7 +529,3 @@ class ReplyFixView(View):
         contact_data.save()
 
         return redirect('mypage')
-
-
-def my_customized_server_error(request):
-    return None
