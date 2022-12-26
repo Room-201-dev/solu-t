@@ -151,7 +151,7 @@ class NoticeEditView(LoginRequiredMixin, View):
             bcc = []
 
             if notice_data.shift == '全体':
-                for mail_push in CustomUser.objects.filter(base=form.cleaned_data['choice_base']):
+                for mail_push in CustomUser.objects.filter(base=notice_data.base):
                     bcc.append(mail_push.email)
             elif notice_data.shift == '日勤' or form.cleaned_data['choice_shift'] == '日勤':
                 for mail_push in CustomUser.objects.filter(shift=notice_data.shift,
