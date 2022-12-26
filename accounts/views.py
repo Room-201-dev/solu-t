@@ -120,9 +120,9 @@ class NoticeEditView(LoginRequiredMixin, View):
         notice_edit_form = NoticePostForm(
             request.POST or None,
             initial={
-                'base': notice_detail.base,
-                'shift': notice_detail.shift,
-                'important': notice_detail.important,
+                'choice_base': notice_detail.base,
+                'choice_shift': notice_detail.shift,
+                'choice_important': notice_detail.important,
                 'title': notice_detail.title,
                 'content': notice_detail.content,
             }
