@@ -20,8 +20,8 @@ class CustomUser(AbstractUser):
         ('夜勤', '夜勤')
     )
 
-    login_id = models.CharField('Login ID', max_length=50)
-    employee_number = models.CharField('社員番号', max_length=50)
+    login_id = models.CharField('Login ID', max_length=50, unique=True)
+    employee_number = models.CharField('社員番号', max_length=50, unique=True)
     assignment = models.CharField('大工程', max_length=10, choices=ASSIGNMENT_CHOICES)
     base = models.CharField('所属拠点', max_length=10, choices=BASE_CHOICE)
     shift = models.CharField('勤務シフト', max_length=5, choices=SHIFT_CHOICE)
@@ -30,7 +30,7 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['login_id', 'employee_number', 'base', 'shift', 'assignment']
 
     def __str__(self):
-        return f"{self.last_name} {self.first_name}"
+        return f"{self.last_name} {self.first_name} <{self.email}>"
 
 
 class Notice(models.Model):
@@ -63,7 +63,7 @@ class Notice(models.Model):
     tag = models.CharField('タグ', max_length=20, choices=TAG_CHOICE, blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return f"to.{self.base} > {self.title}"
 
 
 class ApplyList(models.Model):
@@ -86,7 +86,7 @@ class ApplyList(models.Model):
     remarks_area = models.CharField('備考欄', max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} > {self.choice_kind}"
 
 
 class ApplyData(models.Model):
@@ -97,7 +97,7 @@ class ApplyData(models.Model):
     base = models.CharField('拠点', max_length=10)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} > {self.choice_kind}"
 
 
 class ContactData(models.Model):
@@ -115,4 +115,4 @@ class ContactData(models.Model):
     tag = models.CharField('タグ', max_length=20, null=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.base}：{self.name}から{self.contact_kind}のお問い合わせ"
