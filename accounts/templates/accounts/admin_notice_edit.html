@@ -15,11 +15,11 @@
         <form action="" method="post">
             {% csrf_token %}
             <div class="form_block">
-{#                <div class="form_hidden">#}
-{#                    {{ notice_base }}#}
-{#                    {{ notice_shift }}#}
-{#                    {{ notice_important }}#}
-{#                </div>#}
+                <div class="form_hidden">
+                    {{ notice_edit_form.choice_base }}
+                    {{ notice_edit_form.choice_shift }}
+                    {{ notice_edit_form.choice_important }}
+                </div>
                 <div>
                     <label for="">お知らせの件名</label>
                     {{ notice_edit_form.title }}

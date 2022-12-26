@@ -120,18 +120,15 @@ class NoticeEditView(LoginRequiredMixin, View):
         notice_edit_form = NoticePostForm(
             request.POST or None,
             initial={
+                'choice_base': notice_detail.base,
+                'choice_shift': notice_detail.shift,
+                'choice_important': notice_detail.important,
                 'title': notice_detail.title,
                 'content': notice_detail.content,
             }
         )
-        # notice_base = notice_detail.base
-        # notice_shift = notice_detail.shift
-        # notice_important = notice_detail.important
         return render(request, 'accounts/admin_notice_edit.html', {
             'notice_edit_form': notice_edit_form,
-            # 'notice_base': notice_base,
-            # 'notice_shift': notice_shift,
-            # 'notice_important': notice_important
         })
 
     def post(self, request, *args, **kwargs):
@@ -141,6 +138,9 @@ class NoticeEditView(LoginRequiredMixin, View):
             notice_data = Notice.objects.get(id=self.kwargs['pk'])
             notice_data.title = form.cleaned_data['title']
             notice_data.content = form.cleaned_data['content']
+            notice_data.important = form.cleaned_data['choice_important']
+            notice_data.base = form.cleaned_data['choice_base']
+            notice_data.shift = form.cleaned_data['choice_shift']
             notice_data.tag = form.cleaned_data['choice_tag']
 
             notice_data.save()
@@ -150,12 +150,12 @@ class NoticeEditView(LoginRequiredMixin, View):
             from_email = settings.DEFAULT_FROM_EMAIL
             bcc = []
 
-            if notice_data.shift == '全体':
-                for mail_push in CustomUser.objects.filter(base=notice_data.base):
+            if form.cleaned_data['choice_shift'] == '全体':
+                for mail_push in CustomUser.objects.filter(base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
-            elif notice_data.shift == '日勤' or form.cleaned_data['choice_shift'] == '日勤':
-                for mail_push in CustomUser.objects.filter(shift=notice_data.shift,
-                                                           base=notice_data.base):
+            elif form.cleaned_data['choice_shift'] == '日勤' or form.cleaned_data['choice_shift'] == '日勤':
+                for mail_push in CustomUser.objects.filter(shift=form.cleaned_data['choice_shift'],
+                                                           base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
 
             email = EmailMessage(subject, content, from_email, [], bcc)
