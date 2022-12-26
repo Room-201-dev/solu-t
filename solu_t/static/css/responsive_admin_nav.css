@@ -121,6 +121,10 @@
         display: none;
     }
 
+    .responsive_short_padding {
+        padding-bottom: 0;
+    }
+
     .search_input {
         width: 50vw;
     }
