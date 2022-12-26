@@ -420,7 +420,7 @@ class ContactFormView(View):
             contact_data.name = form.cleaned_data['name']
             contact_data.email = form.cleaned_data['email']
             contact_data.base = form.cleaned_data['base']
-            contact_data.message = '>>> {name} さん\n{message}\n'.format(name=form.cleaned_data['name'],
+            contact_data.message = '{name} さん\n{message}\n'.format(name=form.cleaned_data['name'],
                                                                    message=form.cleaned_data['message'])
             contact_data.contact_kind = form.cleaned_data['kind_contact']
             contact_data.tag = '返信待ち'
