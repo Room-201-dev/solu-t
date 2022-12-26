@@ -16,7 +16,7 @@
         <a href="{% url 'notice_detail' notice.id %}">
             <div class="reply_box">
                 <h3 class="reply_situation">to.{{ notice.base }}：{{ notice.shift }} > Subject：{{ notice.title }}</h3>
-                <p class="reply_title">{{ notice.content }}</p>
+                <p class="reply_title">{{ notice.content | linebreaksbr | truncatechars:30 }}</p>
             </div>
         </a>
     {% endfor %}

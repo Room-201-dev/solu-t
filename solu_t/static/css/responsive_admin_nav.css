@@ -116,4 +116,12 @@
         width: 100%;
         box-sizing: border-box;
     }
+
+    .responsive_display_none {
+        display: none;
+    }
+
+    .search_input {
+        width: 50vw;
+    }
 }

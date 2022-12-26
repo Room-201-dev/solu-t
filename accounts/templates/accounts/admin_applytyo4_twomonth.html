@@ -15,45 +15,45 @@
 
 {% block tr %}
     <tr>
-        <th>所属会社</th>
-        <th>配属工程</th>
+        <th class="responsive_display_none">所属会社</th>
+        <th class="responsive_display_none">配属工程</th>
         <th>名前</th>
-        <th>ログイン ID</th>
-        <th></th>
+        <th class="responsive_display_none">ログイン ID</th>
+        <th class="responsive_display_none"></th>
         <th>申請内容</th>
-        <th>休暇希望日</th>
-        <th>振休日</th>
-        <th>振出日</th>
-        <th>勤務時間※振替時</th>
-        <th>休出の場合</th>
-        <th></th>
-        <th>勤務時間</th>
-        <th>時短</th>
-        <th>勤務時間</th>
-        <th>リフレッシュ休暇</th>
+        <th class="responsive_display_none">休暇希望日</th>
+        <th class="responsive_display_none">振休日</th>
+        <th class="responsive_display_none">振出日</th>
+        <th class="responsive_display_none">勤務時間※振替時</th>
+        <th class="responsive_display_none">休出の場合</th>
+        <th class="responsive_display_none"></th>
+        <th class="responsive_display_none">勤務時間</th>
+        <th class="responsive_display_none">時短</th>
+        <th class="responsive_display_none">勤務時間</th>
+        <th class="responsive_display_none">リフレッシュ休暇</th>
     </tr>
 {% endblock %}
 
 {% block table %}
-    {% for list in two_month %}
+    {% for list in next_month %}
         <p style="display: none" class="base">{{ list.base }}</p>
         <tr class="table_box">
-            <td>東和キャスト</td>
-            <td>{{ list.assignment }}</td>
+            <td class="responsive_display_none">東和キャスト</td>
+            <td class="responsive_display_none">{{ list.assignment }}</td>
             <td>{{ list.name }}</td>
-            <td>{{ list.login_id }}</td>
-            <td></td>
+            <td class="responsive_display_none">{{ list.login_id }}</td>
+            <td class="responsive_display_none"></td>
             <td>{{ list.choice_kind }}</td>
-            <td>{{ list.date|date:"Y/m/d"|default:"" }}</td>
-            <td>{{ list.holiday_date|date:"Y/m/d"|default:"" }}</td>
-            <td>{{ list.work_date|date:"Y/m/d"|default:"" }}</td>
-            <td>{{ list.work_time|default:"" }}</td>
-            <td>{{ list.plus_work|date:"Y/m/d"|default:"" }}</td>
-            <td></td>
-            <td>{{ list.overtime|default:"" }}</td>
-            <td>{{ list.early_date|date:"Y/m/d"|default:"" }}</td>
-            <td>{{ list.early_work|default:"" }}</td>
-            <td>{{ list.refresh_date|date:"Y/m/d"|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.date|date:"Y/m/d"|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.holiday_date|date:"Y/m/d"|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.work_date|date:"Y/m/d"|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.work_time|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.plus_work|date:"Y/m/d"|default:"" }}</td>
+            <td class="responsive_display_none"></td>
+            <td class="responsive_display_none">{{ list.overtime|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.early_date|date:"Y/m/d"|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.early_work|default:"" }}</td>
+            <td class="responsive_display_none">{{ list.refresh_date|date:"Y/m/d"|default:"" }}</td>
             <td class="paid_leave" style="display: none">{{ list.remarks_area }}</td>
             <td><input type="checkbox" name="delete" value="{{ list.id }}"></td>
         </tr>
