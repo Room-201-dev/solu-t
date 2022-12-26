@@ -162,7 +162,7 @@ class NoticeEditView(LoginRequiredMixin, View):
             email.send()
             return redirect('notice_list')
 
-        return render(request, 'accounts/post_notice_form.html', {
+        return render(request, 'accounts/admin_notice_edit.html', {
             'form': form,
         })
 
