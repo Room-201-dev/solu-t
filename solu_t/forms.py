@@ -621,7 +621,7 @@ class BaseRefreshDayForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{early_date}</th><th>{early_work}</th><th>{refresh_date}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>{early_date}</th><th>{early_work}</th><th>{refresh_date}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
