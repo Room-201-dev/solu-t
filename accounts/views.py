@@ -89,7 +89,9 @@ class PostNoticeView(LoginRequiredMixin, FormView):
                                                            base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
 
-            email = EmailMessage(subject, content, from_email, [], bcc)
+            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content.message + '\n\nhttps://solu-t.herokuapp.com/'
+
+            email = EmailMessage(subject, email_content, from_email, [], bcc)
             email.send()
             return redirect('notice_list')
 
@@ -158,7 +160,9 @@ class NoticeEditView(LoginRequiredMixin, View):
                                                            base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
 
-            email = EmailMessage(subject, content, from_email, [], bcc)
+            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content.message + '\n\nhttps://solu-t.herokuapp.com/'
+
+            email = EmailMessage(subject, email_content, from_email, [], bcc)
             email.send()
             return redirect('notice_list')
 
@@ -266,7 +270,7 @@ class ApplyTYO4ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -317,7 +321,7 @@ class ApplyTYO4NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -368,7 +372,7 @@ class ApplyTYO4TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -421,7 +425,7 @@ class ApplyTYO6ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -472,7 +476,7 @@ class ApplyTYO6NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -523,7 +527,7 @@ class ApplyTYO6TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -574,7 +578,7 @@ class ApplyTYO8ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -625,7 +629,7 @@ class ApplyTYO8NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'k-kojima@towa-cast.net', recipient_list)
@@ -676,7 +680,7 @@ class ApplyTYO8TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'manager@towa', recipient_list)
@@ -744,7 +748,7 @@ class ContactReplyView(View):
             contact_data.save()
 
             subject = 'お問い合わせに返信がきました！'
-            content = contact_data.message + '\n\nhttps://solu-t.herokuapp.com/'
+            content = '※このメールは送信専用アドレスから配信されています。\n\n' + contact_data.message + '\n\nhttps://solu-t.herokuapp.com/'
             recipient_list = [reply_form.cleaned_data['email']]
             send_mail(subject, content, 'manager@towa', recipient_list, )
 
