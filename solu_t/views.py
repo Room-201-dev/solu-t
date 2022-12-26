@@ -288,8 +288,8 @@ class CoOneDayView(LoginRequiredMixin, View):
             apply_list.assignment = customize_form.cleaned_data['assignment']
             apply_list.name = customize_form.cleaned_data['name']
             apply_list.login_id = customize_form.cleaned_data['login_id']
-            apply_list.choice_kind = customize_form.cleaned_data['choice_kind']
-            apply_list.refresh_date = 'リフレッシュ休暇'
+            apply_list.choice_kind = 'リフレッシュ休暇'
+            apply_list.refresh_date = customize_form.cleaned_data['refresh_date']
             apply_list.email = customize_form.cleaned_data['email']
             apply_list.save()
 
