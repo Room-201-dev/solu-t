@@ -736,7 +736,7 @@ class ContactReplyView(View):
             contact_data.contact_kind = reply_form.cleaned_data['kind_contact']
             contact_data.email = reply_form.cleaned_data['email']
             contact_data.name = reply_form.cleaned_data['name']
-            contact_data.message = contact_data.message + '\n\n担当者：{user}\n{message}'.format(user=user.last_name,
+            contact_data.message = contact_data.message + '\n\n>>> 担当者：{user}\n{message}'.format(user=user.last_name,
                                                                                              message=
                                                                                              reply_form.cleaned_data[
                                                                                                  'message'])
