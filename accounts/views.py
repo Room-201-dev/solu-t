@@ -127,8 +127,10 @@ class NoticeEditView(LoginRequiredMixin, View):
                 'content': notice_detail.content,
             }
         )
+        notice_base = notice_detail.base
         return render(request, 'accounts/admin_notice_edit.html', {
-            'notice_edit_form': notice_edit_form
+            'notice_edit_form': notice_edit_form,
+            'notice_base': notice_base
         })
 
     def post(self, request, *args, **kwargs):
