@@ -498,7 +498,7 @@ class ReplyFormView(View):
             contact_data.base = reply_form.cleaned_data['base']
             contact_data.email = reply_form.cleaned_data['email']
             contact_data.name = reply_form.cleaned_data['name']
-            contact_data.message = contact_data.message + '\n\n>>> {user} さん\n{message}'.format(user=contact_data.name,
+            contact_data.message = contact_data.message + '\n\n\n>>> {user} さん\n{message}'.format(user=contact_data.name,
                                                                                             message=
                                                                                             reply_form.cleaned_data[
                                                                                                 'message'])
