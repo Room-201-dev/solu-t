@@ -9,7 +9,7 @@
 
 {% block main %}
     <div id="welcome_solt" style="text-align: center">
-        <h4>ようこそ {{ user.base }}FC の {{ user.last_name }} さん</h4>
+        <h4>ようこそ {{ user.base }}FC の {{ user.last_name }}さん</h4>
     </div>
 
     {% for reply_list in reply %}
@@ -47,7 +47,7 @@
                         <div class="notice_content">
                             <a href="{% url 'user_notice_detail' data.id %}">
                                 <h3>{{ data.title }}</h3>
-                                <p class="notice_content">{{ data.content | linebreaksbr }}</p>
+                                <p class="notice_content">{{ data.content | truncatechars:30 | linebreaksbr }}</p>
                             </a>
                         </div>
                     </div>

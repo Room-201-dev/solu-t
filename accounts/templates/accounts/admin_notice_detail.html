@@ -11,7 +11,7 @@
 {% block main %}
     <div class="contact_detail_box">
         <h4 class="reply_title notice_title" style="text-align: center">{{ notice_detail.title }}</h4>
-        <p style="color: #587D9F">{{ notice_detail.content | truncatechars:30 | linebreaksbr }}</p>
+        <p style="color: #587D9F">{{ notice_detail.content | linebreaksbr }}</p>
     </div>
 
     <div style="text-align: right; margin-top: 20px; " class="choice_block">
