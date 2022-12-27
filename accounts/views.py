@@ -719,6 +719,7 @@ class ContactReplyView(View):
         reply_form = ContactForm(
             request.POST or None,
             initial={
+                'contact_kind': contact_data.contact_kind,
                 'base': contact_data.base,
                 'name': contact_data.name,
                 'email': contact_data.email,
@@ -737,7 +738,7 @@ class ContactReplyView(View):
         if reply_form.is_valid():
             contact_data = ContactData.objects.get(id=self.kwargs['pk'])
             contact_data.base = reply_form.cleaned_data['base']
-            contact_data.contact_kind = reply_form.cleaned_data['kind_contact']
+            contact_data.contact_kind = reply_form.cleaned_data['contact_kind']
             contact_data.email = reply_form.cleaned_data['email']
             contact_data.name = reply_form.cleaned_data['name']
             contact_data.message = contact_data.message + '\n\n\n>>> 担当者：{user}\n{message}'.format(user=user.last_name,
