@@ -71,7 +71,7 @@
                 </div>
                 <div id="holiday_input" class="display_block">
                     <label>休暇希望日</label>
-                    {% render_field customize_form.date %}
+                    {% render_field customize_form.date class="test" %}
                 </div>
                 <div id="paid_leave" class="display_block">
                     <label for="">※有給は「有給」を選択</label>
@@ -127,7 +127,7 @@
         </div>
 
         <div style="text-align: right">
-            <button class="learn-more">
+            <button class="learn-more" id="js-input-check">
             <span class="circle" aria-hidden="true">
                 <span class="icon arrow"></span>
             </span>

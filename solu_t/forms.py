@@ -680,6 +680,7 @@ class CustomRefreshDayForm(forms.Form):
 
 class ContactForm(forms.Form):
     kind_contact = forms.ChoiceField(label='お問い合わせの種類', choices=(
+        ('', ''),
         ('休暇希望に関して', '休暇希望に関して'),
         ('書類に関して', '書類に関して'),
         ('現場に関して', '現場に関して'),
