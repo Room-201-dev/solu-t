@@ -89,7 +89,7 @@ class PostNoticeView(LoginRequiredMixin, FormView):
                                                            base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
 
-            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content.message + '\n\nhttps://solu-t.herokuapp.com/'
+            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content + '\n\nhttps://solu-t.herokuapp.com/'
 
             email = EmailMessage(subject, email_content, from_email, [], bcc)
             email.send()
@@ -160,7 +160,7 @@ class NoticeEditView(LoginRequiredMixin, View):
                                                            base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
 
-            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content.message + '\n\nhttps://solu-t.herokuapp.com/'
+            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content + '\n\nhttps://solu-t.herokuapp.com/'
 
             email = EmailMessage(subject, email_content, from_email, [], bcc)
             email.send()
