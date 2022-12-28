@@ -476,7 +476,7 @@ class ReplyFormView(View):
         reply_form = ContactForm(
             request.POST or None,
             initial={
-                'kind': contact_data.contact_kind,
+                'kind_contact': contact_data.contact_kind,
                 'base': contact_data.base,
                 'name': contact_data.name,
                 'email': contact_data.email,
