@@ -174,6 +174,7 @@ if not DEBUG:
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
+    SECRET_KEY = '&0=+d!3@h+))wz8byut_0=)2t&$o_x4wj@o3r^@9&rtd&22*f+'
 
     MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -204,6 +205,6 @@ else:
         'default': dj_database_url.config(
             default='postgres://mpotwowbeuzlgm:08022d45dd46c697d3add0daea9dde85e521f4352c902aa51435e61546bac78c@ec2-52-23-131-232.compute-1.amazonaws.com:5432/d75ouve3ekkcpm')
     }
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['solu-t.herokuapp.com']
 
 # 'solu-t.herokuapp.com',
