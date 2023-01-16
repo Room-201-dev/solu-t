@@ -901,10 +901,6 @@ class ApplyShiftView(View):
             elif 'btn_cancel' in request.POST:
                 content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして、現状では第1・第2いずれの希望も承認がされませんでした。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
                     name=name)
-                approval_user = CustomUser.objects.get(login_id=send_e.user_id)
-                approval_user.time = req_current_time
-                approval_user.day = req_current_day
-                approval_user.save()
 
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
