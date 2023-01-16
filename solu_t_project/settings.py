@@ -205,6 +205,6 @@ else:
         'default': dj_database_url.config(
             default='postgres://mpotwowbeuzlgm:08022d45dd46c697d3add0daea9dde85e521f4352c902aa51435e61546bac78c@ec2-52-23-131-232.compute-1.amazonaws.com:5432/d75ouve3ekkcpm')
     }
-    ALLOWED_HOSTS = ['solu-t.herokuapp.com']
+    ALLOWED_HOSTS = ['.herokuapp.com']
 
 # 'solu-t.herokuapp.com',
