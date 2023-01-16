@@ -171,9 +171,9 @@ if not DEBUG:
     STATIC_URL = '/static/'
 
     # Extra places for collectstatic to find static files.
-    # STATICFILES_DIRS = [
-    #     os.path.join(BASE_DIR, "staticfiles")
-    # ]
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "staticfiles")
+    ]
     SECRET_KEY = '&0=+d!3@h+))wz8byut_0=)2t&$o_x4wj@o3r^@9&rtd&22*f+'
 
     MIDDLEWARE += [
