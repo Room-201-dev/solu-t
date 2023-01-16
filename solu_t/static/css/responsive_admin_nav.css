@@ -128,4 +128,13 @@
     .search_input {
         width: 50vw;
     }
+
+    .css_flex {
+        justify-content: space-between !important;
+    }
+
+    .responsive_post {
+        margin-top: 2vh;
+        display: block;
+    }
 }

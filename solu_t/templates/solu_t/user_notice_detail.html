@@ -22,6 +22,8 @@
         {% elif notice_data.tag == '追加出勤 + 協力休暇' %}
             <a href="{% url 'plus_work' %}" class="attend_form">追加出勤申請</a>
             <a href="{% url 'co_oneday' %}" class="attend_form danger">協力休暇申請</a>
+        {% elif notice_data.tag == '棚卸し' %}
+            <a href="{% url 'day_shift' %}" class="attend_form">翌月シフト申請</a>
         {% endif %}
     </div>
 {% endblock %}

@@ -1,7 +1,6 @@
 import openpyxl
 from django.shortcuts import render, redirect
 from django.conf import settings
-from django.core.mail import EmailMessage
 from django.urls import reverse_lazy
 from allauth.account import views
 from django.views.generic import View
@@ -17,10 +16,12 @@ from django.core.mail import send_mail
 from django.db.models import Q
 from functools import reduce
 from operator import and_
+from django.core.mail import EmailMessage
+from itertools import chain
 
-from solu_t.models import CustomUser, Notice, ApplyList, ApplyData, ContactData
+from solu_t.models import CustomUser, Notice, ApplyList, ApplyData, ContactData, ShiftDataModel
 
-from .forms import NoticePostForm, SuperUserLoginForm
+from .forms import NoticePostForm, SuperUserLoginForm, CustomContactForm
 from solu_t.forms import ContactForm
 
 from django.views.decorators.csrf import requires_csrf_token
@@ -47,6 +48,11 @@ class LoginManagerView(LoginView):
 
 class LogoutManagerView(views.LogoutView):
     template_name = 'accounts/logout.html'
+
+
+class ApllyKindView(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'accounts/admin_apply_kind.html')
 
 
 class ManagerPageView(LoginRequiredMixin, View):
@@ -205,7 +211,7 @@ def export(request):
     wb = openpyxl.Workbook()
     ws = wb.active
     response = HttpResponse(content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=staff_leave_list.xlsx'
+    response['Content-Disposition'] = 'attachment; filename=holiday.xlsx'
 
     ws.cell(2, 2).value = '所属拠点'
     ws.cell(2, 3).value = '氏名'
@@ -704,6 +710,45 @@ class ContactListView(View):
         return render(request, 'accounts/contact_list.html', context)
 
 
+class ContactStaffView(View):
+    def get(self, request, *args, **kwargs):
+        contact_form = CustomContactForm
+
+        return render(request, 'accounts/contact_administer.html', {
+            'contact_form': contact_form
+        })
+
+    def post(self, request, *args, **kwargs):
+        contact_form = CustomContactForm(request.POST or None)
+        user = request.user
+
+        if contact_form.is_valid():
+            contact = ContactData()
+            contact.email = request.POST['to']
+            user_last_name = CustomUser.objects.filter(email=request.POST['to']).values_list('last_name', flat=True)
+            user_first_name = CustomUser.objects.filter(email=request.POST['to']).values_list('first_name', flat=True)
+            user_name = user_last_name[0] + user_first_name[0]
+            contact.name = user_name
+            contact.base = CustomUser.objects.filter(email=request.POST['to']).values('base')
+            contact.message = '担当者：{user}\n{message}'.format(user=user.last_name,
+                                                             message=
+                                                             contact_form.cleaned_data[
+                                                                 'message'])
+            contact.contact_kind = contact_form.cleaned_data['kind_contact']
+            contact.tag = '担当者から連絡'
+            contact.save()
+
+            subject = user_name + ' 様宛に担当者より連絡が来ています'
+            content = '※このメールは送信専用アドレスから配信されています。\n\n' + contact_form.cleaned_data['message'] + '\n\nhttps://solu-t.herokuapp.com/'
+            recipient_list = [request.POST['to']]
+            send_mail(subject, content, 'manager@towa', recipient_list, )
+
+            return redirect('contact_list')
+
+        else:
+            return HttpResponse('無効なヘッダ')
+
+
 class ContactDetailView(View):
     def get(self, request, *args, **kwargs):
         contact_data = ContactData.objects.get(id=self.kwargs['pk'])
@@ -792,3 +837,113 @@ class SearchContactView(View):
             'keyword': keyword,
             'contact_page': contact_page
         })
+
+
+class ApplyShiftView(View):
+    def get(self, request, *args, **kwargs):
+        apply_shift = ShiftDataModel.objects.order_by('-id')
+        keyword = request.GET.get('keyword')
+
+        if keyword:
+            exclusion_list = set([' ', '　'])
+            query_list = ''
+            for word in keyword:
+                if not word in exclusion_list:
+                    query_list += word
+
+            query = reduce(and_, [Q(assign__icontains=q) | Q(name__icontains=q) for q in query_list])
+            apply_shift = apply_shift.filter(query)
+
+        return render(request, 'accounts/admin_apply_shift.html', {
+            'keyword': keyword,
+            'apply_shift': apply_shift
+        })
+
+    def post(self, request, *args, **kwargs):
+        post_pks = request.POST.getlist('delete')
+
+        for send_e in ShiftDataModel.objects.filter(pk__in=post_pks):
+            name = send_e.name.replace('　', '')
+            email = send_e.email
+
+            if send_e.choice == '変更無し':
+                req_current_time = send_e.current_time
+                req_current_day = send_e.current_day
+            elif send_e.choice == '変更希望':
+                req_first_time = send_e.firstchoice_time
+                req_first_day = send_e.firstchoice_day
+                req_second_time = send_e.secondchoice_time
+                req_second_day = send_e.secondchoice_day
+
+            subject = '【お知らせ】曜日変更希望の申請結果につきまして'
+
+            if 'btn_current' in request.POST:
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n翌月の曜日シフトにつきまして {req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                    name=name, req_time=req_current_time, req_day=req_current_day)
+                approval_user = CustomUser.objects.get(login_id=send_e.user_id)
+                approval_user.time = req_current_time
+                approval_user.day = req_current_day
+                approval_user.save()
+            elif 'btn_first' in request.POST:
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして 第1希望の{req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                    name=name, req_time=req_first_time, req_day=req_first_day)
+                approval_user = CustomUser.objects.get(login_id=send_e.user_id)
+                approval_user.time = req_first_time
+                approval_user.day = req_first_day
+                approval_user.save()
+            elif 'btn_second' in request.POST:
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして 第2希望の{req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                    name=name, req_time=req_second_time, req_day=req_second_day)
+                approval_user = CustomUser.objects.get(login_id=send_e.user_id)
+                approval_user.time = req_second_time
+                approval_user.day = req_second_day
+                approval_user.save()
+            elif 'btn_cancel' in request.POST:
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして、現状では第1・第2いずれの希望も承認がされませんでした。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                    name=name)
+                approval_user = CustomUser.objects.get(login_id=send_e.user_id)
+                approval_user.time = req_current_time
+                approval_user.day = req_current_day
+                approval_user.save()
+
+            recipient_list = [email]
+            complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
+            complete_mail.send()
+        ShiftDataModel.objects.filter(pk__in=post_pks).delete()
+
+        return redirect('apply_shift')
+
+
+def shfit_export(request):
+    shift_list = ShiftDataModel.objects.all()
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    response = HttpResponse(content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=inventory.xlsx'
+
+    ws.cell(2, 2).value = '所属拠点'
+    ws.cell(2, 3).value = '氏名'
+    ws.cell(2, 4).value = '希望'
+    ws.cell(2, 5).value = '現在の勤務時間'
+    ws.cell(2, 6).value = '現在の曜日シフト'
+    ws.cell(2, 7).value = '第1希望時間'
+    ws.cell(2, 8).value = '第1希望曜日'
+    ws.cell(2, 9).value = '第2希望時間'
+    ws.cell(2, 10).value = '第2希望曜日'
+    i = 3
+
+    for shift in shift_list:
+        ws.cell(i, 2).value = shift.assign
+        ws.cell(i, 3).value = shift.name
+        ws.cell(i, 4).value = shift.choice
+        ws.cell(i, 5).value = shift.current_time
+        ws.cell(i, 6).value = shift.current_day
+        ws.cell(i, 7).value = shift.firstchoice_time
+        ws.cell(i, 8).value = shift.firstchoice_day
+        ws.cell(i, 9).value = shift.secondchoice_time
+        ws.cell(i, 10).value = shift.secondchoice_day
+        i += 1
+
+    wb.save(response)
+
+    return response

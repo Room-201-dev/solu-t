@@ -16,7 +16,7 @@ def return_recipient_list(base):
     if base == '坂戸':
         return ['tyo6@towa-cast.net']
     if base == '相模原':
-        return ['tyo8@towa-cast.net']
+        return ['kojimakai5335@gmail.com']
 
 
 class SignUpForm(UserCreationForm):
@@ -719,3 +719,111 @@ class ContactForm(forms.Form):
             send_mail(subject, message, from_sender, recipient_list)
         except BadHeaderError:
             return HttpResponse('無効なヘッダが検出されました')
+
+
+class ShiftForm(forms.Form):
+    name = forms.CharField(label='お名前', max_length=100, widget=forms.TextInput(attrs={
+        'class': 'name_form',
+    }))
+    email = forms.EmailField(label='メールアドレス', widget=forms.EmailInput(attrs={
+        'class': 'email_form',
+    }))
+    base = forms.CharField(max_length=10)
+    choice_kind = forms.ChoiceField(
+        choices=(
+            ('', ''),
+            ('変更無し', '変更無し'),
+            ('変更希望', '変更希望'),
+        ), required=True,
+        widget=forms.Select())
+    time = forms.ChoiceField(
+        choices=(
+            (' ', ' '),
+            ('8-19時', '8-19時'),
+            ('8-17時', '8-17時'),
+            ('9-18時', '9-18時'),
+            ('10-19時', '10-19時'),
+            ('19-30時', '19-30時'),
+            ('20-31時', '20-31時'),
+            ('21-30時', '21-30時'),
+        ),
+        required=False,
+        label='時間',
+        widget=forms.Select())
+    day = forms.MultipleChoiceField(
+        choices=(
+            ('日', '日'),
+            ('月', '月'),
+            ('火', '火'),
+            ('水', '水'),
+            ('木', '木'),
+            ('金', '金'),
+            ('土', '土'),
+        ),
+        required=False,
+        label='曜日',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'column'
+        }))
+    first_choice_time = forms.ChoiceField(
+        choices=(
+            (' ', ' '),
+            ('8-19時', '8-19時'),
+            ('8-17時', '8-17時'),
+            ('9-18時', '9-18時'),
+            ('10-19時', '10-19時'),
+            ('19-30時', '19-30時'),
+            ('20-31時', '20-31時'),
+            ('21-30時', '21-30時'),
+        ),
+        required=False,
+        label='時間',
+        widget=forms.Select(attrs={
+            'class': 'column choice'
+        }))
+    first_choice_day = forms.MultipleChoiceField(
+        choices=(
+            ('日', '日'),
+            ('月', '月'),
+            ('火', '火'),
+            ('水', '水'),
+            ('木', '木'),
+            ('金', '金'),
+            ('土', '土'),
+        ),
+        required=False,
+        label='曜日',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'column choice'
+        }))
+    second_choice_time = forms.ChoiceField(
+        choices=(
+            (' ', ' '),
+            ('8-19時', '8-19時'),
+            ('8-17時', '8-17時'),
+            ('9-18時', '9-18時'),
+            ('10-19時', '10-19時'),
+            ('19-30時', '19-30時'),
+            ('20-31時', '20-31時'),
+            ('21-30時', '21-30時'),
+        ),
+        required=False,
+        label='時間',
+        widget=forms.Select(attrs={
+            'class': 'column choice'
+        }))
+    second_choice_day = forms.MultipleChoiceField(
+        choices=(
+            ('日', '日'),
+            ('月', '月'),
+            ('火', '火'),
+            ('水', '水'),
+            ('木', '木'),
+            ('金', '金'),
+            ('土', '土'),
+        ),
+        required=False,
+        label='曜日',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'column choice'
+        }))

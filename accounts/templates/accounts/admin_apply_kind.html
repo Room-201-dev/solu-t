@@ -1,0 +1,39 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/apply_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+    <style>
+    div > a {
+        color: #587D9F;
+        padding: 10px 30px;
+        margin-bottom: 2vh;
+        display: inline-block;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    div > a:hover {
+        color: white;
+        background-color: #587D9F;
+    }
+    </style>
+{% endblock %}
+
+{% block title %}Apply List{% endblock %}
+
+{% block main %}
+    <div style="text-align: center; color: #587D9F; margin-bottom: 2vh">
+        <h3 style="font-size: 20px">申請処理 一覧</h3>
+    </div>
+    <div style="text-align: center; margin-top: 4vh">
+        <a href="{% url 'apply_tyo4_thismonth' %}">青梅 シフト変更</a>
+        <br>
+        <a href="{% url 'apply_tyo6_thismonth' %}">坂戸 シフト変更</a>
+        <br>
+        <a href="{% url 'apply_tyo8_thismonth' %}">相模原 シフト変更</a>
+        <br>
+        <a href="{% url 'apply_shift' %}">棚卸し</a>
+    </div>
+
+{% endblock %}

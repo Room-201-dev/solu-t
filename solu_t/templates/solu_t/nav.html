@@ -33,7 +33,14 @@
 </header>
 
 <div>
-    {% block main %}{% endblock %}
+    {% block main %}
+        {% if not user.is_authenticated %}
+            <div style="text-align: center; margin-top: 3vh">
+                <h3>ログインしてください</h3>
+                <a href="{% url 'staff_login' %}">ログイン</a>
+            </div>
+        {% endif %}
+    {% endblock %}
 </div>
 
 {% if user.is_authenticated %}
@@ -59,18 +66,11 @@
                     </a>
                 </ul>
                 <div class="copyright_block">
-                    <p class="header_write copyright">2022 ©️ Kai Kojima</p>
+                    <p class="header_write copyright">2023 ©️ Kai Kojima</p>
                 </div>
             </div>
         </nav>
     </footer>
-{% endif %}
-
-{% if not user.is_authenticated %}
-    <div style="text-align: center; margin-top: 3vh">
-        <h3>ログインしてください</h3>
-        <a href="{% url 'staff_login' %}">ログイン</a>
-    </div>
 {% endif %}
 
 {% block js %}{% endblock %}

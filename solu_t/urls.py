@@ -13,6 +13,7 @@ urlpatterns = [
     path('mypage/notice/<int:pk>', views.UserNoticeDetailView.as_view(), name='user_notice_detail'),
     path('mypage/plus_work/', views.PlusWorkView.as_view(), name='plus_work'),
     path('mypage/co_oneday/', views.CoOneDayView.as_view(), name='co_oneday'),
+    path('mypage/day_shift/', views.StaffRequestShift.as_view(), name='day_shift'),
     path('mypage/reply/<int:pk>/', views.ReplyDetailView.as_view(), name='user_reply'),
     path('mypage/reply/<int:pk>/reply_form/', views.ReplyFormView.as_view(), name='reply_form'),
     path('mypage/reply/<int:pk>/reply_fix/', views.ReplyFixView.as_view(), name='reply_fix'),

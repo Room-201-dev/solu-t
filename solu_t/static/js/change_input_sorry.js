@@ -3,6 +3,9 @@ let behind_time = document.getElementById('id_behind_work')
 let behind_exit = document.getElementById('id_behind_exit')
 let change_input = document.getElementsByClassName('change_input')
 let holiday_input = document.getElementById('holiday_input')
+let switch_display = document.getElementsByClassName('switch_display')
+let current = document.getElementById('current')
+let apply = document.getElementById('apply')
 
 
 kind.addEventListener('change', () => {
@@ -84,5 +87,15 @@ kind.addEventListener('change', () => {
             change_input[i].style.borderBottom = '0.5px solid #bdbdbd'
             holiday_input.style.display = 'none'
         }
+    } else if (kind.value === '') {
+        for (let i = 0; i < switch_display.length; i++) {
+            switch_display[i].style.setProperty('display', 'none', 'important')
+        }
+    } else if (kind.value === '変更無し') {
+        apply.style.setProperty('display', 'none', 'important')
+        current.style.setProperty('display', 'block', 'important')
+    } else if (kind.value === '変更希望') {
+        current.style.setProperty('display', 'none', 'important')
+        apply.style.setProperty('display', 'block', 'important')
     }
 })

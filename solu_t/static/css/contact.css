@@ -98,3 +98,16 @@
     border-radius: 4px;
     padding: 4px;
 }
+
+.new_post {
+    color: #d50707;
+    border: 0.5px solid #d50707;
+    padding: 8px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.new_post:hover {
+    color: #fff;
+    background-color: #d50707;
+}

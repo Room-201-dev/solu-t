@@ -1,0 +1,106 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/apply_list.css' %}">
+{% endblock %}
+
+{% block title %}Shift List{% endblock %}
+
+{% block main %}
+    <div class="apply_page" style="margin-bottom: 4vh">
+        <h4>棚卸しリスト</h4>
+    </div>
+
+    <div style="text-align: center;">
+        <div style="color: #587D9F; margin: 0 auto 2vh auto; padding-bottom: 1vh; border-bottom: 0.3px solid #587D9F; display: inline-block; justify-content: center">
+            <form method="get" action="{% url 'apply_shift' %}" class="responsive_short_padding">
+                <label for="" class="responsive_display_none">所属で検索：</label>
+                <input class="search_input" type="text" name="keyword" placeholder="所属を検索...">
+                <button style="margin-left: 2vw; background-color: #587D9F; padding: 8px; color: #fff; border-radius: 4px"
+                        type="submit" class="search_button">検索
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1" class="apply_table">
+            <tr>
+                <th class="responsive_display_none">所属</th>
+                <th>氏名</th>
+                <th>希望</th>
+                <th class="responsive_display_none">変更無し：時間</th>
+                <th class="responsive_display_none">変更無し：曜日</th>
+                <th>勤務時間：第1</th>
+                <th class="responsive_display_none">曜日シフト：第1</th>
+                <th>勤務時間：第2</th>
+                <th class="responsive_display_none">曜日シフト：第2</th>
+            </tr>
+            {% for shift in apply_shift %}
+                <tr>
+                    <td class="responsive_display_none">{{ shift.assign }}</td>
+                    <td>{{ shift.name }}</td>
+                    <td>{{ shift.choice }}</td>
+                    <td class="responsive_display_none">{{ shift.current_time }}</td>
+                    <td class="responsive_display_none">{{ shift.current_day }}</td>
+                    <td>{{ shift.firstchoice_time }}</td>
+                    <td class="responsive_display_none">{{ shift.firstchoice_day }}</td>
+                    <td>{{ shift.secondchoice_time }}</td>
+                    <td class="responsive_display_none">{{ shift.secondchoice_day }}</td>
+                    <td><input type="checkbox" name="delete" value="{{ shift.id }}"></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div class="css_flex">
+            <div class="check_block">
+                <label class="switch">
+                    <input type="checkbox" onclick="checkall()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+
+            <div class="button_block">
+                <div class="button_block button_css">
+                    <button name="btn_current">変更無し</button>
+                </div>
+                <div class="button_block button_css">
+                    <button name="btn_first">第1希望で承認</button>
+                </div>
+                <div class="button_block button_css">
+                    <button name="btn_second">第2希望で承認</button>
+                </div>
+                <div class="button_block button_css">
+                    <button name="btn_cancel">全て否認</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: right; margin-left: 1vw" class="responsive_display_none">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                <a class="button-text" href="{% url 'export_shift_excel' %}">Export</a>
+            </button>
+        </div>
+
+    </form>
+
+    <script>
+        const checkbox = document.getElementsByName('delete')
+
+        function checkall() {
+            for (let i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].checked === true) {
+                    checkbox[i].checked = false
+                } else if (checkbox[i].checked === false) {
+                    checkbox[i].checked = true
+                }
+            }
+        }
+    </script>
+{% endblock %}

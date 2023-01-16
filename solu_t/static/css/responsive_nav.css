@@ -168,4 +168,12 @@
         margin-top: 20% !important;
         margin-bottom: 10%;
     }
+
+    .responsive_block {
+        display: block !important;
+    }
+
+    .column > div {
+        width: 12%;
+    }
 }

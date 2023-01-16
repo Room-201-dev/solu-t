@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     margin-right: auto;
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
 }
 
 .form_block > div {
@@ -84,4 +84,25 @@
 .footer_ul div {
     display: flex;
     align-items: center;
+}
+
+.css_block {
+    display: block !important;
+}
+
+.css_flex {
+    display: flex;
+    margin-bottom: 1vh;
+}
+
+.column > div {
+    margin-right: 1vw;
+}
+
+.second_choice {
+    margin-top: 6vh;
+}
+
+.switch_display {
+    display: none !important;
 }

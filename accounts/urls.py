@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path('login/', views.LoginManagerView.as_view(), name='manager_login'),
     path('logout/', views.LogoutManagerView.as_view(), name='manager_logout'),
@@ -36,5 +35,10 @@ urlpatterns = [
          name='reply'),
     path('login/manager_page/contact_list/contact_detail/<int:pk>/delete', views.DeleteContactView.as_view(),
          name='delete_contact'),
-    path('login/manager_page/contact_list/search/', views.SearchContactView.as_view(), name='contact_search')
+    path('login/manager_page/contact_list/search/', views.SearchContactView.as_view(), name='contact_search'),
+    path('login/manager_page/contact_staff/', views.ContactStaffView.as_view(), name='contact_staff'),
+    path('login/manager_page/apply_kind_list/', views.ApllyKindView.as_view(), name='apply_kind'),
+    path('login/manager_page/apply_shift/', views.ApplyShiftView.as_view(), name='apply_shift'),
+    path('login/manager_page/apply_shift/search/', views.ApplyShiftView.as_view(), name='apply_search'),
+    path('login/manager_page/apply_shift/shift_export', views.shfit_export, name='export_shift_excel'),
 ]

@@ -17,7 +17,10 @@
             <form method="get" action="{% url 'contact_search' %}" class="responsive_short_padding">
                 <label for="" class="responsive_display_none">所属と名前で検索する：</label>
                 <input class="search_input" type="text" name="keyword" placeholder="お問い合わせを検索...">
-                <button style="margin-left: 2vw; background-color: #587D9F; padding: 8px; color: #fff; border-radius: 4px" type="submit" class="search_button">検索</button>
+                <button style="margin-left: 2vw; background-color: #587D9F; padding: 8px; color: #fff; border-radius: 4px"
+                        type="submit" class="search_button">検索
+                </button>
+                <a href="{% url 'contact_staff' %}" class="new_post responsive_post">管理者から問い合わせる</a>
             </form>
         </div>
     </div>
@@ -26,8 +29,7 @@
         <a href="{% url 'contact_detail' contact.id %}">
             <div class="reply_box">
                 <p class="reply_situation">{{ contact.tag | default:'' }}</p>
-                <h4 class="reply_title">{{ contact.base }}所属：{{ contact.name }} 様からの {{ contact.contact_kind }}
-                    のお問い合わせ</h4>
+                <h4 class="reply_title">{{ contact.base }}所属：{{ contact.name }} 様<br></様br>お問い合わせ内容：{{ contact.contact_kind }}</h4>
             </div>
         </a>
 

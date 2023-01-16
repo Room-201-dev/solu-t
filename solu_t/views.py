@@ -11,23 +11,13 @@ from django.http import HttpResponse
 import datetime
 from dateutil.relativedelta import relativedelta
 
-from .models import ApplyList, ApplyData, Notice, CustomUser, ContactData
+from .models import ApplyList, ApplyData, Notice, CustomUser, ContactData, ShiftDataModel
 
 from .forms import SorryForm, ApplyBaseForm, ApplyCustomizeForm, SignUpForm, ContactForm, LoginForm, BasePlusWorkForm, \
-    BaseRefreshDayForm, CustomPlusWorkForm, CustomRefreshDayForm
+    BaseRefreshDayForm, CustomPlusWorkForm, CustomRefreshDayForm, ShiftForm
 
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseServerError
-
-
-@requires_csrf_token
-def my_customized_server_error(request, template_name='500.html'):
-    import sys
-    from django.views import debug
-    import traceback
-    print(traceback.format_exc())
-    error_html = debug.technical_500_response(request, *sys.exc_info()).content
-    return HttpResponseServerError(error_html)
 
 
 class SignUpView(FormView):
@@ -498,10 +488,11 @@ class ReplyFormView(View):
             contact_data.base = reply_form.cleaned_data['base']
             contact_data.email = reply_form.cleaned_data['email']
             contact_data.name = reply_form.cleaned_data['name']
-            contact_data.message = contact_data.message + '\n\n\n>>> {user} さん\n{message}'.format(user=contact_data.name,
-                                                                                            message=
-                                                                                            reply_form.cleaned_data[
-                                                                                                'message'])
+            contact_data.message = contact_data.message + '\n\n\n>>> {user} さん\n{message}'.format(
+                user=contact_data.name,
+                message=
+                reply_form.cleaned_data[
+                    'message'])
             contact_data.tag = '返信待ち'
             contact_data.save()
             reply_form.send_email()
@@ -529,3 +520,46 @@ class ReplyFixView(View):
         contact_data.save()
 
         return redirect('mypage')
+
+
+class StaffRequestShift(View):
+    template_name = 'solu_t/day_shift.html'
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+
+        shiftform = ShiftForm(initial={
+            'name': user.last_name + '　' + user.first_name,
+            'email': user.email,
+            'base': user.base,
+        })
+
+        return render(request, 'solu_t/day_shift.html', {
+            'shiftform': shiftform
+        })
+
+    def post(self, request, *args, **kwargs):
+        shiftform = ShiftForm(request.POST or None)
+        user = request.user
+
+        if shiftform.is_valid():
+            shift = ShiftDataModel()
+            shift.user_id = user.login_id
+            shift.assign = shiftform.cleaned_data['base']
+            shift.name = shiftform.cleaned_data['name']
+            shift.email = shiftform.cleaned_data['email']
+            shift.choice = shiftform.cleaned_data['choice_kind']
+            shift.current_day = '・'.join(request.POST.getlist('day'))
+            shift.current_time = shiftform.cleaned_data['time']
+            shift.firstchoice_day = '・'.join(request.POST.getlist('first_choice_day'))
+            shift.firstchoice_time = shiftform.cleaned_data['first_choice_time']
+            shift.secondchoice_day = '・'.join(request.POST.getlist('second_choice_day'))
+            shift.secondchoice_time = shiftform.cleaned_data['second_choice_time']
+            shift.save()
+
+            return render(request, 'solu_t/apply_shift_complete.html', {
+                'name': request.user.last_name
+            })
+
+        else:
+            return HttpResponse('エラーが発生しました。再度申請画面より申請をお願いいたします。')

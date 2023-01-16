@@ -16,7 +16,7 @@
         {% if reply_list.name == name and reply_list.email == user.email %}
             {% if not reply_list.tag == '返信待ち' and not reply_list.tag == '解決済み' %}
                 <div class="notice_block" style="text-align: center">
-                    <h3 style="color: #d50707">担当者より返信が届いています！</h3>
+                    <h3 style="color: #d50707">担当者より連絡が届いています！</h3>
                     <div class="notice_content">
                         <a href="{% url 'user_reply' reply_list.id %}" class="notice_title">
                             <h3>{{ reply_list.contact_kind }}</h3>

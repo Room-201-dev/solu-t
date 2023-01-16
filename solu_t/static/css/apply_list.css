@@ -125,6 +125,31 @@ input:checked + .slider:before {
     transform: translateX(85px);
 }
 
+.css_flex {
+    display: flex;
+    justify-content: right;
+}
+
+.button_block {
+    margin-top: 0 !important;
+    margin-bottom: 2vh;
+}
+
+.button_css {
+    text-align: center;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.button_css:hover {
+    background-color: #587D9F;
+}
+
+.button_css:hover > button {
+    color: #fff;
+}
+
 /*------ ADDED CSS ---------*/
 .slider:after {
     content: 'Check';

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-from .models import Notice, ApplyList, ApplyData, ContactData
+from .models import Notice, ApplyList, ApplyData, ContactData, ShiftDataModel
 
 # Register your models here.
 
@@ -21,3 +21,4 @@ admin.site.register(Notice, PostAdmin)
 admin.site.register(ApplyList)
 admin.site.register(ApplyData)
 admin.site.register(ContactData)
+admin.site.register(ShiftDataModel)

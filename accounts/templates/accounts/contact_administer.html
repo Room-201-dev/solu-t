@@ -1,0 +1,46 @@
+{% extends 'accounts/admin_nav.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block title %}Contact Staff{% endblock %}
+
+{% block main %}
+    <div class="form_title">
+        <h3>個別お問い合わせフォーム</h3>
+    </div>
+
+    <form method="post" id="post-form">
+        {% csrf_token %}
+        <div class="form_block">
+            <div>
+                <label for="">宛先</label>
+                {% render_field contact_form.to %}
+            </div>
+
+            <div>
+                <label for="">連絡内容</label>
+                {% render_field contact_form.kind_contact %}
+            </div>
+
+            <div class="display_block contact_box" style="display: block">
+                <label>お問い合わせ内容</label>
+                {% render_field contact_form.message cols=60 %}
+            </div>
+        </div>
+
+        <div style="text-align: right">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+            </span>
+                <span class="button-text">送信する</span>
+            </button>
+        </div>
+    </form>
+{% endblock %}
