@@ -1,0 +1,154 @@
+* {
+    font-size: 16px;
+    font-family: "M PLUS 1p", serif;
+    padding: 0;
+    margin: 0;
+}
+
+* a {
+    text-decoration: none;
+}
+
+body {
+    padding-bottom: 290px;
+}
+
+title {
+    font-size: 0;
+    line-height: 0;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+}
+
+.signup_box {
+    margin: 2vh auto 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.signup_box p {
+    margin-top: 1vh;
+}
+
+.signup_box p label {
+    color: #587D9F;
+}
+
+.signup_box p input {
+    padding: 3px;
+    color: #587D9F;
+    border: 1px solid #587D9F;
+    border-radius: 2px;
+}
+
+.signup_box p span {
+    color: #d50707;
+}
+
+.signup_box ul {
+    margin-left: 10%;
+    list-style: none;
+}
+
+.signup_box ul li {
+    color: #d50707;
+}
+
+.header_block {
+    background-color: #587D9F;
+    margin: auto;
+    width: 200px;
+    color: #fff;
+    border-radius: 3%;
+}
+
+.header_block h2 {
+    margin-bottom: 0;
+    padding-top: 4%;
+    font-size: 29px;
+}
+
+.header_block p {
+    padding-bottom: 4%;
+    font-size: 12px;
+}
+
+.footer_block {
+    margin-top: 4%;
+    background-color: #587D9F;
+}
+
+footer .footer_ul {
+    margin-bottom: 0;
+    padding: 2% 0;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: end;
+}
+
+.footer_ul a {
+    margin: 0 1%;
+    padding: 8px 15px;
+    display: block;
+    color: #fff;
+    background-color: #587D9F;
+    border-radius: 8px;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer_ul a:hover {
+    text-decoration: none;
+    color: #587D9F;
+    background-color: #fff;
+}
+
+.header_block {
+    margin-top: 27px;
+    text-align: center;
+}
+
+.footer_list {
+    margin-bottom: 0;
+    align-items: center;
+    text-decoration: none;
+    display: flex;
+}
+
+.icon_size {
+    height: 4rem;
+}
+
+.copyright_block {
+    height: 2.5rem;
+    text-align: center;
+}
+
+.copyright {
+    color: #fff;
+}
+
+.fa-solid {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.make_solution {
+    margin-bottom: 0 !important;
+}
+
+.main_block {
+    margin: 3vh auto;
+    width: 80%;
+    padding-bottom: 300px;
+}
+

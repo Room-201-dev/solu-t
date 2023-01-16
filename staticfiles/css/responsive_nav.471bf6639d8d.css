@@ -1,0 +1,179 @@
+@media screen and ( max-width: 480px ) {
+    * {
+        font-size: 15px;
+    }
+
+    body {
+        height: 100vh;
+        padding-bottom: 0!important;
+    }
+
+    body > div {
+        padding-bottom: 100px;
+    }
+
+    form {
+        padding-bottom: 80px;
+    }
+
+    .responsive_login_form {
+        margin-top: 50% !important;
+        margin-bottom: 50% !important;
+    }
+
+    .login_submit {
+        margin-top: 10% !important;
+    }
+
+    .notice_block {
+        width: 82% !important;
+    }
+
+    .notice_block a h3 {
+        font-size: 17px !important;
+    }
+
+    footer li {
+        font-size: 0 !important;
+    }
+
+    .footer_list {
+        margin-bottom: 0;
+    }
+
+    .footer_ul {
+        margin-bottom: 0;
+        padding: 4px 0 4px 0 !important;
+        justify-content: space-around !important;
+        align-items: center;
+    }
+
+    .footer_ul a {
+        display: inline-block;
+    }
+
+    .footer_ul a div {
+        display: flex;
+        height: 3rem;
+        align-items: center;
+    }
+
+    .icon_size {
+        width: 100%;
+        height: 100%;
+    }
+
+    .copyright {
+        font-size: 10px !important;
+    }
+
+    .copyright_block {
+        padding-bottom: 2px;
+        height: auto;
+    }
+
+    .copyright_block p {
+        margin-bottom: 0;
+    }
+
+    .fa-solid {
+        font-size: 1.75rem;
+    }
+
+    .form_block {
+        width: 92% !important;
+        margin: 2.5% auto !important;
+    }
+
+    .form_block > div {
+        width: 100% !important;
+    }
+
+    .form_title {
+        margin-top: 3vh !important;
+    }
+
+    .contact_box {
+        display: block !important;
+    }
+
+    .message_form {
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .display_block {
+        padding-top: 8px;
+    }
+
+    .form_title h3 {
+        font-size: 20px !important;
+    }
+
+    .form_block > div {
+        padding-top: 8px;
+    }
+
+    .form_block div select, input {
+        width: 130px;
+    }
+
+    #id_kind_contact {
+        width: 180px;
+    }
+
+    .reply_title {
+        font-size: 17px !important;
+    }
+
+    .contact_detail_box p {
+        margin-top: 15px !important;
+    }
+
+    .responsive_form {
+        width: 92% !important;
+    }
+
+    .contact_detail_box {
+        margin: 30px 4% 0 4% !important;
+        padding-bottom: 18px !important;
+    }
+
+    .attend_box {
+        margin: 30px 4% 0 4% !important;
+        width: 90% !important;
+        text-align: center !important;
+    }
+
+    .attend_form {
+        color: #fff !important;
+        background-color: #587D9F !important;
+    }
+
+    .danger {
+        color: #fff !important;
+        background-color: #d50707 !important;
+    }
+
+    .responsive_center {
+        margin-top: 50%;
+        margin-bottom: 50%;
+    }
+
+    .p {
+        font-size: 13px;
+    }
+
+    .form_title {
+        margin-top: 20% !important;
+        margin-bottom: 10%;
+    }
+
+    .responsive_block {
+        display: block !important;
+    }
+
+    .column > div {
+        width: 12%;
+    }
+}

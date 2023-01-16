@@ -1,0 +1,32 @@
+.top_page {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: #d50707;
+    font-size: 19px;
+    margin-bottom: 1vh;
+}
+
+.incomplete_block {
+    color: #587D9F;
+}
+
+.incomplete_block > div {
+    width: 80%;
+    display: inline-block;
+    padding: 15px;
+    border: 0.5px solid #587D9F;
+    border-radius: 4px;
+    margin-bottom: 2vh;
+}
+
+.incomplete_block > div > h4 {
+    margin-bottom: 1vh;
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    background-color: #587D9F;
+    border-radius: 4px;
+}

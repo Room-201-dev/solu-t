@@ -1,0 +1,9 @@
+form div p {
+    color: #587D9F;
+    margin-bottom: 1vh;
+}
+
+form div p input {
+    padding: 3px;
+    color: #587D9F;
+}

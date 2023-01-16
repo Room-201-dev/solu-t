@@ -1,0 +1,18 @@
+#id_title {
+    width: 20vw;
+}
+
+#id_content {
+    color: #587D9F;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: auto;
+    border: 1px solid #587D9F;
+    border-radius: 2px;
+    padding: 5px 5px;
+}
+
+.notice {
+    color: #587D9F !important;
+    background-color: #fff !important;
+}
