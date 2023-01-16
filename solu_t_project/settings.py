@@ -222,4 +222,5 @@ LOGGING = {
         },
     },
 }
+
 # 'solu-t.herokuapp.com',
