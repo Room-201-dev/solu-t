@@ -25,8 +25,6 @@ class CustomUser(AbstractUser):
     assignment = models.CharField('大工程', max_length=10, choices=ASSIGNMENT_CHOICES)
     base = models.CharField('所属拠点', max_length=10, choices=BASE_CHOICE)
     shift = models.CharField('勤務シフト', max_length=5, choices=SHIFT_CHOICE)
-    time = models.CharField('勤務時間', max_length=20, null=True, blank=True)
-    day = models.CharField('曜日シフト', max_length=100, null=True, blank=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['login_id', 'employee_number', 'base', 'shift', 'assignment']
