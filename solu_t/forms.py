@@ -16,7 +16,7 @@ def return_recipient_list(base):
     if base == '坂戸':
         return ['tyo6@towa-cast.net']
     if base == '相模原':
-        return ['kojimakai5335@gmail.com']
+        return ['tyo8@towa-cast.net']
 
 
 class SignUpForm(UserCreationForm):
