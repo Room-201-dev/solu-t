@@ -117,19 +117,19 @@ class ContactData(models.Model):
     def __str__(self):
         return f"{self.base}：{self.name}から{self.contact_kind}のお問い合わせ"
 
-#
-# class ShiftDataModel(models.Model):
-#     user_id = models.CharField('UserID', max_length=1000, blank=True, null=True)
-#     assign = models.CharField('所属', max_length=10)
-#     name = models.CharField('名前', max_length=50)
-#     email = models.EmailField('メールアドレス', unique=True)
-#     choice = models.CharField('希望', max_length=10)
-#     current_day = models.CharField('現在の曜日シフト', max_length=50, blank=True, null=True)
-#     current_time = models.CharField('現在の勤務時間', max_length=50, blank=True, null=True)
-#     firstchoice_time = models.CharField('第一希望時間', max_length=50, blank=True, null=True)
-#     firstchoice_day = models.CharField('第一希望曜日', max_length=50, blank=True, null=True)
-#     secondchoice_time = models.CharField('第二希望時間', max_length=50, blank=True, null=True)
-#     secondchoice_day = models.CharField('第二希望曜日', max_length=50, blank=True, null=True)
-#
-#     def __str__(self):
-#         return f"{self.assign}：{self.name}"
+
+class ShiftDataModel(models.Model):
+    user_id = models.CharField('UserID', max_length=1000, blank=True, null=True)
+    assign = models.CharField('所属', max_length=10)
+    name = models.CharField('名前', max_length=50)
+    email = models.EmailField('メールアドレス', unique=True)
+    choice = models.CharField('希望', max_length=10)
+    current_day = models.CharField('現在の曜日シフト', max_length=50, blank=True, null=True)
+    current_time = models.CharField('現在の勤務時間', max_length=50, blank=True, null=True)
+    firstchoice_time = models.CharField('第一希望時間', max_length=50, blank=True, null=True)
+    firstchoice_day = models.CharField('第一希望曜日', max_length=50, blank=True, null=True)
+    secondchoice_time = models.CharField('第二希望時間', max_length=50, blank=True, null=True)
+    secondchoice_day = models.CharField('第二希望曜日', max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.assign}：{self.name}"
