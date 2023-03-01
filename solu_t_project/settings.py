@@ -174,7 +174,7 @@ if not DEBUG:
     # STATICFILES_DIRS = [
     #     os.path.join(BASE_DIR, "staticfiles")
     # ]
-    SECRET_KEY = os.environ['SECRET_KEY']
+    # SECRET_KEY = os.environ['SECRET_KEY']
 
     MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -203,7 +203,7 @@ else:
     db_from_env = dj_database_url.config()
     DATABASES = {
         'default': dj_database_url.config(
-            default='postgres://mpotwowbeuzlgm:08022d45dd46c697d3add0daea9dde85e521f4352c902aa51435e61546bac78c@ec2-52-23-131-232.compute-1.amazonaws.com:5432/d75ouve3ekkcpm')
+            default='postgres://rddrgxkeodjqfn:24b9360ec462eeee3f39f37c0bd11e1b59b1c9b3e590c2c15d5d74f342b06e7c@ec2-100-26-39-41.compute-1.amazonaws.com:5432/domjaglaeugos')
     }
     ALLOWED_HOSTS = ['.herokuapp.com']
 
@@ -224,3 +224,4 @@ LOGGING = {
 }
 
 # 'solu-t.herokuapp.com',
+# postgres://mpotwowbeuzlgm:08022d45dd46c697d3add0daea9dde85e521f4352c902aa51435e61546bac78c@ec2-52-23-131-232.compute-1.amazonaws.com:5432/d75ouve3ekkcpm
