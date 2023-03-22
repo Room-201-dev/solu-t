@@ -42,7 +42,7 @@ EMAIL_HOST_USER = 'towacast.labor.shift@gmail.com'
 EMAIL_HOST_PASSWORD = 'zxjeilhlluwhbdtl'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'towacast.labor.management@gmail.com'
+DEFAULT_FROM_EMAIL = 'towacast.labor.shift@gmail.com'
 
 # Application definition
 
@@ -203,7 +203,7 @@ else:
     db_from_env = dj_database_url.config()
     DATABASES = {
         'default': dj_database_url.config(
-            default='postgres://rddrgxkeodjqfn:24b9360ec462eeee3f39f37c0bd11e1b59b1c9b3e590c2c15d5d74f342b06e7c@ec2-100-26-39-41.compute-1.amazonaws.com:5432/domjaglaeugos')
+            default='postgres://rddrgxkeodjqfn:24b9360ec462eeee3f39f37c0bd11e1b59b1c9b3e590c2c15d5d74f342b06e7c')
     }
     ALLOWED_HOSTS = ['.herokuapp.com']
 
