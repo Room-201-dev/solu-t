@@ -166,7 +166,7 @@ class NoticeEditView(LoginRequiredMixin, View):
                                                            base=form.cleaned_data['choice_base']):
                     bcc.append(mail_push.email)
 
-            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content + '\n\nhttps://solu-t.herokuapp.com/'
+            email_content = '※このメールは送信専用アドレスから配信されています。\n\n' + content + '\n\n'
 
             email = EmailMessage(subject, email_content, from_email, [], bcc)
             email.send()
@@ -276,7 +276,7 @@ class ApplyTYO4ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -327,7 +327,7 @@ class ApplyTYO4NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -378,7 +378,7 @@ class ApplyTYO4TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -431,7 +431,7 @@ class ApplyTYO6ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -482,7 +482,7 @@ class ApplyTYO6NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -533,7 +533,7 @@ class ApplyTYO6TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -584,7 +584,7 @@ class ApplyTYO8ThisMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -635,7 +635,7 @@ class ApplyTYO8NextMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -686,7 +686,7 @@ class ApplyTYO8TwoMonthView(LoginRequiredMixin, View):
                 paid_leave = ''
 
             subject = '申請が完了いたしました'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+            content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました {req_date}の{req}{paid_leave} 処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                 name=name, req=req, req_date=req_date, paid_leave=paid_leave)
             recipient_list = [email]
             complete_mail = EmailMessage(subject, content, 'towa-cast@complate', recipient_list)
@@ -739,7 +739,7 @@ class ContactStaffView(View):
             contact.save()
 
             subject = user_name + ' 様宛に担当者より連絡が来ています'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n' + contact_form.cleaned_data['message'] + '\n\nhttps://solu-t.herokuapp.com/'
+            content = '※このメールは送信専用アドレスから配信されています。\n\n' + contact_form.cleaned_data['message'] + '\n\n'
             recipient_list = [request.POST['to']]
             send_mail(subject, content, 'manager@towa', recipient_list, )
 
@@ -794,7 +794,7 @@ class ContactReplyView(View):
             contact_data.save()
 
             subject = 'お問い合わせに返信がきました！'
-            content = '※このメールは送信専用アドレスから配信されています。\n\n' + contact_data.message + '\n\nhttps://solu-t.herokuapp.com/'
+            content = '※このメールは送信専用アドレスから配信されています。\n\n' + contact_data.message + '\n\n'
             recipient_list = [reply_form.cleaned_data['email']]
             send_mail(subject, content, 'manager@towa', recipient_list, )
 
@@ -878,28 +878,28 @@ class ApplyShiftView(View):
             subject = '【お知らせ】曜日変更希望の申請結果につきまして'
 
             if 'btn_current' in request.POST:
-                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n翌月の曜日シフトにつきまして {req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n翌月の曜日シフトにつきまして {req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                     name=name, req_time=req_current_time, req_day=req_current_day)
                 approval_user = CustomUser.objects.get(login_id=send_e.user_id)
                 approval_user.time = req_current_time
                 approval_user.day = req_current_day
                 approval_user.save()
             elif 'btn_first' in request.POST:
-                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして 第1希望の{req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして 第1希望の{req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                     name=name, req_time=req_first_time, req_day=req_first_day)
                 approval_user = CustomUser.objects.get(login_id=send_e.user_id)
                 approval_user.time = req_first_time
                 approval_user.day = req_first_day
                 approval_user.save()
             elif 'btn_second' in request.POST:
-                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして 第2希望の{req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして 第2希望の{req_time} ({req_day}) で処理が完了いたしました。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                     name=name, req_time=req_second_time, req_day=req_second_day)
                 approval_user = CustomUser.objects.get(login_id=send_e.user_id)
                 approval_user.time = req_second_time
                 approval_user.day = req_second_day
                 approval_user.save()
             elif 'btn_cancel' in request.POST:
-                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして、現状では第1・第2いずれの希望も承認がされませんでした。\n\n引き続きよろしくお願いいたします。\n\nhttps://solu-t.herokuapp.com/'.format(
+                content = '※このメールは送信専用アドレスから配信されています。\n\n{name} 様\n\nお疲れ様です。\nシフト担当でございます。\n\n頂戴しておりました曜日変更希望につきまして、現状では第1・第2いずれの希望も承認がされませんでした。\n\n引き続きよろしくお願いいたします。\n\n'.format(
                     name=name)
 
             recipient_list = [email]
@@ -943,4 +943,3 @@ def shfit_export(request):
     wb.save(response)
 
     return response
-

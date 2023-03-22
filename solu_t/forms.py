@@ -330,7 +330,7 @@ class ApplyBaseForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>\n\n'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -432,7 +432,7 @@ class ApplyCustomizeForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th>{date}</th><th>{holiday_date}</th><th>{work_date}</th><th>{work_time}</th></tr></table>\n\n'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -490,7 +490,7 @@ class BasePlusWorkForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休日出勤</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th></th><th>{work_time}</th><th></th><th></th><th></th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休日出勤</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th></th><th>{work_time}</th><th></th><th></th><th></th></tr></table>\n\n'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -546,7 +546,7 @@ class CustomPlusWorkForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休出 希望</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th>{work_time}</th><th></th><th></th><th></th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>休出 希望</th><th></th><th></th><th></th><th></th><th>{plus_work}</th><th>{work_time}</th><th></th><th></th><th></th></tr></table>\n\n'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -621,7 +621,7 @@ class BaseRefreshDayForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>{early_date}</th><th>{early_work}</th><th>{refresh_date}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>{early_date}</th><th>{early_work}</th><th>{refresh_date}</th></tr></table>\n\n'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -668,7 +668,7 @@ class CustomRefreshDayForm(forms.Form):
 
         try:
             send_mail(subject, content, 'solu-t@staff', recipient_list,
-                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{refresh_date}</th></tr></table>\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+                      html_message='<table border="1"><tr><th>東和キャスト</th><th>{assignment}</th><th>{name}</th><th>{login_id}</th><th></th><th>{choice_kind}</th><th></th><th></th><th></th><th></th><th></th><th></th><th>{refresh_date}</th></tr></table>\n\n'.format(
                           assignment=assignment,
                           name=name,
                           login_id=login_id,
@@ -710,7 +710,7 @@ class ContactForm(forms.Form):
         subject = '{base}所属： {name} 様より {kind_contact} のお問い合わせがありました'.format(base=base, name=name,
                                                                              kind_contact=kind_contact)
         from_sender = '{name} <{email}>'.format(name=name, email=email)
-        message = 'お問い合わせ内容：{kind_contact}\n{message}\n\nhttps://solu-t.herokuapp.com/accounts/login/'.format(
+        message = 'お問い合わせ内容：{kind_contact}\n{message}\n\n'.format(
             kind_contact=kind_contact, message=message)
 
         recipient_list = return_recipient_list(base)
