@@ -15,6 +15,7 @@ from django.conf.global_settings import DATE_INPUT_FORMATS, DATETIME_INPUT_FORMA
 import django_heroku
 import dj_database_url
 from socket import gethostname
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,23 +27,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
+load_dotenv()
 DEBUG = False
 
 SESSION_COOKIE_AGE = 86400
 SESSION_SAVE_EVERY_REQUEST = True
-SECRET_KEY = '&0=+d!3@h+))wz8byut_0=)2t&$o_x4wj@o3r^@9&rtd&22*f+'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 DATE_INPUT_FORMATS += ['%Y/%m/%d']
 DATETIME_INPUT_FORMATS += ('%Y/%m/%d',)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'towacast.labor.shift@gmail.com'
-EMAIL_HOST_PASSWORD = 'zxjeilhlluwhbdtl'
+EMAIL_HOST_USER = os.environ['EMAIL_ADDRESS']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'towacast.labor.shift@gmail.com'
+DEFAULT_FROM_EMAIL = os.environ['EMAIL_ADDRESS']
 
 # Application definition
 
@@ -203,7 +204,7 @@ else:
     db_from_env = dj_database_url.config()
     DATABASES = {
         'default': dj_database_url.config(
-            default='postgres://rddrgxkeodjqfn:24b9360ec462eeee3f39f37c0bd11e1b59b1c9b3e590c2c15d5d74f342b06e7c@ec2-100-26-39-41.compute-1.amazonaws.com:5432/domjaglaeugos')
+            default=os.environ['DATABASE_URL'])
     }
     ALLOWED_HOSTS = ['.herokuapp.com']
 
@@ -222,6 +223,3 @@ LOGGING = {
         },
     },
 }
-
-# 'solu-t.herokuapp.com',
-# postgres://mpotwowbeuzlgm:08022d45dd46c697d3add0daea9dde85e521f4352c902aa51435e61546bac78c@ec2-52-23-131-232.compute-1.amazonaws.com:5432/d75ouve3ekkcpm
