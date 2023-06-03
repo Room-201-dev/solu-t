@@ -15,7 +15,6 @@ from django.conf.global_settings import DATE_INPUT_FORMATS, DATETIME_INPUT_FORMA
 import django_heroku
 import dj_database_url
 from socket import gethostname
-from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,23 +25,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-load_dotenv()
 DEBUG = False
 
 SESSION_COOKIE_AGE = 86400
 SESSION_SAVE_EVERY_REQUEST = True
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "&0=+d!3@h+))wz8byut_0=)2t&$o_x4wj@o3r^@9&rtd&22*f+"
 
 DATE_INPUT_FORMATS += ['%Y/%m/%d']
 DATETIME_INPUT_FORMATS += ('%Y/%m/%d',)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ['EMAIL_ADDRESS']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
+EMAIL_HOST_USER = "towacast100800@gmail.com"
+EMAIL_HOST_PASSWORD = "ildh bgat cruo icsv"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = os.environ['EMAIL_ADDRESS']
+DEFAULT_FROM_EMAIL = "towacast100800@gmail.com"
 
 # Application definition
 
