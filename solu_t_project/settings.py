@@ -36,11 +36,11 @@ DATETIME_INPUT_FORMATS += ('%Y/%m/%d',)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "towacast100800@gmail.com"
-EMAIL_HOST_PASSWORD = "ildh bgat cruo icsv"
+EMAIL_HOST_USER = "towacast.stash@gmail.com"
+EMAIL_HOST_PASSWORD = "jeqo mudu dwjf hxis"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "towacast100800@gmail.com"
+DEFAULT_FROM_EMAIL = "towacast.stash@gmail.com"
 
 # Application definition
 
